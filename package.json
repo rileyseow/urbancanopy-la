@@ -2,25 +2,32 @@
   "name": "metro-canopy-la",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md,svg}\""
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
     "sass": "^1.99.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.59.3"
   }
 }
