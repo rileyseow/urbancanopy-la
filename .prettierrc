@@ -1,0 +1,10 @@
+{
+  "arrowParens": "avoid",
+  "experimentalOperatorPosition": "start",
+  "experimentalTernaries": true,
+  "jsxSingleQuote": true,
+  "plugins": ["@prettier/plugin-xml"],
+  "printWidth": 60,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
