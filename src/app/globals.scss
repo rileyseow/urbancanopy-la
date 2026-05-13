@@ -1,12 +1,14 @@
+@use 'palette';
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #{palette.$white};
+  --foreground: #{palette.$cod-gray};
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #{palette.$cod-gray};
+    --foreground: #{palette.$white};
   }
 }
 
