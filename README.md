@@ -1,36 +1,36 @@
-# MetroCanopy LA
+# UrbanCanopy LA
 
-Real-time geospatial civic-tech platform for analyzing heat and shade accessibility across Los Angeles public transportation systems.
+Real-time geospatial web application for analyzing car-free accessible urban spaces across Los Angeles using environmental and spatial data.
 
-Combines live transit feeds, weather data, solar geometry, and urban environmental datasets to estimate stop-level pedestrian heat exposure and transit comfort conditions.
+Combines tree canopy coverage, live transit feeds, weather conditions, and points of interest datasets into an interactive map experience for discovering estimated shaded corridors, parks, cafes, transit stops, and pedestrian-friendly areas throughout the city.
 
-Deployed on Vercel at http://metrocanopy.vercel.app.
+Deployed on Vercel at http://urbancanopyla.vercel.app.
 
 ## Goals
 
-- Explore climate accessibility in public transit systems
-- Demonstrate real-time geospatial analytics workflows
+- Explore climate accessibility and pedestrian comfort in urban environments
+- Demonstrate real-time geospatial analytics and mapping workflows
 
 ## Features
 
-- Live LA-area transit map using real-time GTFS feeds
-- Real-time vehicle positions and arrivals
-- Stop-level heat exposure scoring
-- Dynamic shade estimation using solar position
-- Tree canopy and building footprint overlays
-- Transit corridor exposure heatmaps
-- Hottest stop/corridor rankings
+- Live LA-area map
+- Tree canopy and green space overlays
+- Real-time GTFS vehicle positions and arrivals
+- Parks, cafes, transit stops, and public-space POIs
+- Live weather and temperature integration
+- Estimated heat, shade, and comfort analytics
+- Search and location filtering
 - Mobile-friendly interactive map UI
 
 ## Stack
 
 ```text
-Transit + Weather Data
-            ↓
+Environmental + Spatial Data
+              ↓
 Supabase / PostGIS
-            ↓
-Exposure + Spatial Analytics Processing
-            ↓
+              ↓
+Geospatial + Comfort Analytics
+              ↓
 Next.js + MapLibre Visualization
 ```
 
@@ -43,7 +43,7 @@ Next.js + MapLibre Visualization
 
 ## Development
 
-Realtime feed polling in 5-minute intervals. Cached server-side.
+Real-time data polling + integration with cached server-side processing.
 
 ### Environment
 
@@ -55,8 +55,10 @@ WEATHER_API_KEY=your_key
 
 ### Data sources
 
-- GTFS real-time vehicles
-- GTFS static stops, routes
 - LA tree canopy
 - LA building footprint
+- LA parks and open-spaces
+- OpenStreetMap / Overpass POIs
+- GTFS real-time vehicles
+- GTFS static stops, routes
 - Weather API
