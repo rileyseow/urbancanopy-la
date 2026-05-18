@@ -1,6 +1,10 @@
 'use client';
 
-import { Map as MapLibreMap } from 'react-map-gl/maplibre';
+import {
+  GeolocateControl,
+  Map as MapLibreMap,
+  NavigationControl,
+} from 'react-map-gl/maplibre';
 
 import {
   MAP_CENTER,
@@ -9,6 +13,10 @@ import {
 } from '@/constants/MAP';
 
 const Map = () => {
+  const handleOutOfMaxBounds = () => {
+    alert('You are outside the maximum bounds of the map.');
+  };
+
   return (
     <MapLibreMap
       mapStyle='https://tiles.openfreemap.org/styles/bright'
@@ -18,7 +26,20 @@ const Map = () => {
         latitude: MAP_CENTER.lat,
       }}
       maxBounds={MAP_MAX_BOUNDS}
-    />
+    >
+      <NavigationControl
+        position='top-right'
+        showZoom
+        showCompass
+        visualizePitch
+        visualizeRoll
+      />
+      <GeolocateControl
+        position='top-right'
+        positionOptions={{ enableHighAccuracy: true }}
+        onOutOfMaxBounds={handleOutOfMaxBounds}
+      />
+    </MapLibreMap>
   );
 };
 
