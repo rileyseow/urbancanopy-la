@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import Providers from '@/app/providers';
+
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './globals.scss';
 
@@ -30,7 +32,9 @@ const RootLayout = ({
       lang='en'
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 };
