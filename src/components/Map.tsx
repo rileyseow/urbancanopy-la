@@ -4,8 +4,10 @@ import {
   GeolocateControl,
   Map as MapLibreMap,
   NavigationControl,
+  ScaleControl,
 } from 'react-map-gl/maplibre';
 
+import SiteLogo from '@/components/SiteLogo';
 import {
   MAP_CENTER,
   MAP_MAX_BOUNDS,
@@ -27,6 +29,7 @@ const Map = () => {
       }}
       maxBounds={MAP_MAX_BOUNDS}
     >
+      <SiteLogo />
       <NavigationControl
         position='top-right'
         showZoom
@@ -38,6 +41,10 @@ const Map = () => {
         position='top-right'
         positionOptions={{ enableHighAccuracy: true }}
         onOutOfMaxBounds={handleOutOfMaxBounds}
+      />
+      <ScaleControl
+        position='bottom-right'
+        unit='imperial'
       />
     </MapLibreMap>
   );

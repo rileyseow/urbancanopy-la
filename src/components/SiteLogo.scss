@@ -1,0 +1,31 @@
+.SiteLogo {
+  position: absolute;
+  display: flex;
+  top: 16px;
+  left: 16px;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  background-color: var(--surface);
+  cursor: default;
+
+  > svg.logo {
+    width: 50px;
+  }
+
+  > hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2px;
+
+    h1 {
+      font-size: 20px;
+
+      .city {
+        color: var(--primary);
+      }
+    }
+  }
+}

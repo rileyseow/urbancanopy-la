@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -12,6 +13,12 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
+
+export const metadata: Metadata = {
+  title: 'UrbanCanopy LA',
+  description:
+    'Real-time geospatial map for analyzing car-free accessible urban spaces across Los Angeles.',
+};
 
 const RootLayout = ({
   children,
