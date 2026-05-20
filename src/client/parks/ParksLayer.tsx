@@ -1,5 +1,6 @@
 import { Source, Layer } from 'react-map-gl/maplibre';
 
+import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
 import useParks from '@/client/parks/useParks';
 
@@ -8,7 +9,7 @@ const ParksLayer = () => {
 
   const isImageLoaded = useMapImage({
     id: 'park-icon',
-    src: '/icons/park.svg',
+    src: parkIconUrl,
   });
 
   if (!data || !isImageLoaded) {
