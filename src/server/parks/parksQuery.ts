@@ -12,7 +12,7 @@ const parksQuery = ({
   lat2,
 }: OverpassBbox) => {
   return `
-[out:json][timeout:25];
+[out:json][timeout:40];
 
 (
   nwr["leisure"="park"](${lat1},${lng1},${lat2},${lng2});

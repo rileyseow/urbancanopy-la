@@ -1,11 +1,17 @@
 import { Source, Layer } from 'react-map-gl/maplibre';
 
+import useMapImage from '@/client/hooks/useMapImage';
 import useParks from '@/client/parks/useParks';
 
 const ParksLayer = () => {
   const { data } = useParks();
 
-  if (!data) {
+  const isImageLoaded = useMapImage({
+    id: 'park-icon',
+    src: '/icons/park.svg',
+  });
+
+  if (!data || !isImageLoaded) {
     return null;
   }
 
@@ -21,17 +27,18 @@ const ParksLayer = () => {
           ['==', ['geometry-type'], 'LineString'],
         ]}
         paint={{
-          'fill-color': '#de4acd',
+          'fill-color': '#3e8e5a',
           'fill-opacity': 0.3,
         }}
       />
       <Layer
-        id='parks-point'
-        type='circle'
+        id='parks-symbol'
+        type='symbol'
         filter={['==', ['geometry-type'], 'Point']}
-        paint={{
-          'circle-color': '#de4acd',
-          'circle-radius': 6,
+        layout={{
+          'icon-image': 'park-icon',
+          'icon-size': 0.3,
+          'icon-allow-overlap': true,
         }}
       />
     </Source>
