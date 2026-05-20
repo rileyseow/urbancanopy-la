@@ -1,31 +1,53 @@
-import { LOS_ANGELES_BOUNDS } from '@/constants/MAP';
-import parksQuery from '@/server/parks/parksQuery';
-import { OVERPASS_URL, USER_AGENT } from '@/server/config';
+import { supabase } from '@/server/supabase';
 
 const fetchParks = async () => {
-  const query = parksQuery({
-    lat1: LOS_ANGELES_BOUNDS[1],
-    lng1: LOS_ANGELES_BOUNDS[0],
-    lat2: LOS_ANGELES_BOUNDS[3],
-    lng2: LOS_ANGELES_BOUNDS[2],
-  });
+  const [
+    { data: polygons, error: polygonsError },
+    { data: points, error: pointsError },
+  ] = await Promise.all([
+    supabase
+      .from('parks_polygons_geojson')
+      .select('id,name,geom'),
 
-  const response = await fetch(OVERPASS_URL, {
-    method: 'POST',
-    headers: {
-      'User-Agent': USER_AGENT,
-    },
-    body: new URLSearchParams({ data: query }),
-  });
+    supabase.from('parks_points').select('id,name,geom'),
+  ]);
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(
-      `Failed to fetch parks: ${response.status} ${response.statusText}. ${errorText}`
+  if (polygonsError || pointsError) {
+    console.error(
+      'Error fetching parks from Supabase:',
+      polygonsError || pointsError
     );
+    throw new Error('Failed to fetch parks data');
   }
 
-  return response.json();
+  const polygonsGeojson = {
+    type: 'FeatureCollection',
+    features: polygons.map(park => ({
+      type: 'Feature',
+      geometry: park.geom,
+      properties: {
+        id: park.id,
+        name: park.name,
+      },
+    })),
+  };
+
+  const pointsGeojson = {
+    type: 'FeatureCollection',
+    features: points.map(park => ({
+      type: 'Feature',
+      geometry: park.geom,
+      properties: {
+        id: park.id,
+        name: park.name,
+      },
+    })),
+  };
+
+  return {
+    polygons: polygonsGeojson,
+    points: pointsGeojson,
+  };
 };
 
 export default fetchParks;

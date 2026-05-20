@@ -10,9 +10,4 @@ export const MAP_MAX_BOUNDS: Extract<
   -121.81, 32.2, -113.9, 35.2,
 ];
 
-export const LOS_ANGELES_BOUNDS: Extract<
-  LngLatBoundsLike,
-  [number, number, number, number]
-> = [-118.7, 33.6, -117.2, 34.5];
-
 export const MAP_ZOOM = 10;
