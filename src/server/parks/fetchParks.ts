@@ -1,53 +1,57 @@
 import { supabase } from '@/server/supabase';
 
-const fetchParks = async () => {
-  const [
-    { data: polygons, error: polygonsError },
-    { data: points, error: pointsError },
-  ] = await Promise.all([
-    supabase
-      .from('parks_polygons_geojson')
-      .select('id,name,geom'),
+export const fetchParksPoints = async () => {
+  const { data, error } = await supabase
+    .from('parks_points')
+    .select('id,name,geom');
 
-    supabase.from('parks_points').select('id,name,geom'),
-  ]);
-
-  if (polygonsError || pointsError) {
+  if (error) {
     console.error(
-      'Error fetching parks from Supabase:',
-      polygonsError || pointsError
+      'Error fetching parks points from Supabase:',
+      error
     );
-    throw new Error('Failed to fetch parks data');
+    throw new Error('Failed to fetch parks points data');
   }
 
-  const polygonsGeojson = {
+  const geojson = {
     type: 'FeatureCollection',
-    features: polygons.map(park => ({
+    features: data.map(f => ({
       type: 'Feature',
-      geometry: park.geom,
+      geometry: f.geom,
       properties: {
-        id: park.id,
-        name: park.name,
+        id: f.id,
+        name: f.name,
       },
     })),
   };
 
-  const pointsGeojson = {
-    type: 'FeatureCollection',
-    features: points.map(park => ({
-      type: 'Feature',
-      geometry: park.geom,
-      properties: {
-        id: park.id,
-        name: park.name,
-      },
-    })),
-  };
-
-  return {
-    polygons: polygonsGeojson,
-    points: pointsGeojson,
-  };
+  return geojson;
 };
 
-export default fetchParks;
+export const fetchParksPolygons = async () => {
+  const { data, error } = await supabase
+    .from('parks_polygons_geojson')
+    .select('id,name,geom');
+
+  if (error) {
+    console.error(
+      'Error fetching parks polygons from Supabase:',
+      error
+    );
+    throw new Error('Failed to fetch parks polygons data');
+  }
+
+  const geojson = {
+    type: 'FeatureCollection',
+    features: data.map(f => ({
+      type: 'Feature',
+      geometry: f.geom,
+      properties: {
+        id: f.id,
+        name: f.name,
+      },
+    })),
+  };
+
+  return geojson;
+};
