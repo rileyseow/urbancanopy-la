@@ -2,6 +2,8 @@ import { Source, Layer } from 'react-map-gl/maplibre';
 
 import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
+import useTooltips from '@/client/hooks/useTooltips';
+import ParksTooltip from '@/client/parks/ParksTooltip';
 import {
   useParksPoints,
   useParksPolygons,
@@ -63,10 +65,17 @@ const ParksPolygonLayer = () => {
 };
 
 const ParksLayer = () => {
+  const { hoveredFeature } = useTooltips({
+    layerIds: ['parks-fill', 'parks-symbol'],
+  });
+
   return (
     <>
       <ParksPolygonLayer />
       <ParksPointLayer />
+      {hoveredFeature && (
+        <ParksTooltip f={hoveredFeature} />
+      )}
     </>
   );
 };
