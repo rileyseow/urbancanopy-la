@@ -11,7 +11,7 @@ import type { MapLibreFeature } from '@/types/map';
  *
  * @returns The currently hovered feature and its coordinates
  */
-const useTooltips = ({
+const useTooltip = ({
   layerIds,
 }: {
   layerIds: string[];
@@ -72,4 +72,4 @@ const useTooltips = ({
   };
 };
 
-export default useTooltips;
+export default useTooltip;

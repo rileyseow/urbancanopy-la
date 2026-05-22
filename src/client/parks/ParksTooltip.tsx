@@ -1,21 +1,12 @@
-import { Popup } from 'react-map-gl/maplibre';
-
 import type { MapLibreFeature } from '@/types/map';
 
-import './ParksTooltip.scss';
+import Tooltip from '@/client/components/Tooltip';
 
 const ParksTooltip = ({ f }: { f: MapLibreFeature }) => {
   return (
-    <Popup
-      className='ParksTooltip'
-      longitude={f.lng}
-      latitude={f.lat}
-      anchor='bottom'
-      closeButton={false}
-      closeOnClick={false}
-    >
+    <Tooltip lng={f.lng} lat={f.lat}>
       <span>{f.feature.properties.name}</span>
-    </Popup>
+    </Tooltip>
   );
 };
 

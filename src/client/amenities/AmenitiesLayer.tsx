@@ -6,7 +6,7 @@ import toiletIconUrl from '@/assets/toilet.svg?url';
 import AmenitiesTooltip from '@/client/amenities/AmenitiesTooltip';
 import useAmenities from '@/client/amenities/useAmenities';
 import useMapImage from '@/client/hooks/useMapImage';
-import useTooltips from '@/client/hooks/useTooltips';
+import useTooltip from '@/client/hooks/useTooltip';
 
 const AmenitiesLayer = () => {
   const { data } = useAmenities();
@@ -30,7 +30,7 @@ const AmenitiesLayer = () => {
     src: toiletIconUrl,
   });
 
-  const { hoveredFeature } = useTooltips({
+  const { hoveredFeature } = useTooltip({
     layerIds: [
       'bicycle-parking',
       'drinking-water',

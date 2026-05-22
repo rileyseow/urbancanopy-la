@@ -3,7 +3,7 @@ import { supabase } from '@/server/supabase';
 export const fetchParksPoints = async () => {
   const { data, error } = await supabase
     .from('parks_points')
-    .select('id,name,geom');
+    .select('id, geom, name');
 
   if (error) {
     console.error(
@@ -31,7 +31,7 @@ export const fetchParksPoints = async () => {
 export const fetchParksPolygons = async () => {
   const { data, error } = await supabase
     .from('parks_polygons_geojson')
-    .select('id,name,geom');
+    .select('id, geom, name');
 
   if (error) {
     console.error(

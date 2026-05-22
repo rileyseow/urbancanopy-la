@@ -1,8 +1,6 @@
-import { Popup } from 'react-map-gl/maplibre';
-
 import type { MapLibreFeature } from '@/types/map';
 
-import './AmenitiesTooltip.scss';
+import Tooltip from '@/client/components/Tooltip';
 
 const AmenitiesTooltip = ({
   f,
@@ -19,16 +17,9 @@ const AmenitiesTooltip = ({
     : 'Unnamed Toilet';
 
   return (
-    <Popup
-      className='AmenitiesTooltip'
-      longitude={f.lng}
-      latitude={f.lat}
-      anchor='bottom'
-      closeButton={false}
-      closeOnClick={false}
-    >
+    <Tooltip lng={f.lng} lat={f.lat}>
       <span>{name ?? amenityDefault}</span>
-    </Popup>
+    </Tooltip>
   );
 };
 
