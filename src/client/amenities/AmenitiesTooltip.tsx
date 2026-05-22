@@ -1,4 +1,4 @@
-import type { MapLibreFeature } from '@/types/map';
+import type { MapLibreFeature } from '@/types/map.types';
 
 import Tooltip from '@/client/components/Tooltip';
 

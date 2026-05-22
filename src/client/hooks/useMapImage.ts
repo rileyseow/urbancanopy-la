@@ -6,6 +6,13 @@ type MapImage = {
   src: string;
 };
 
+/**
+ * Custom hook to add images to a MapLibre map style and track loading states.
+ *
+ * @param images - Array of image objects with ID and source URL
+ *
+ * @returns A boolean indicating whether all images are loaded
+ */
 const useMapImage = (images: MapImage[]) => {
   const { current: map } = useMap();
 

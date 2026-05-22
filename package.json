@@ -23,6 +23,7 @@
   "devDependencies": {
     "@prettier/plugin-xml": "^3.4.2",
     "@svgr/webpack": "^8.1.0",
+    "@types/geojson": "^7946.0.16",
     "@types/maplibre-gl": "^1.13.2",
     "@types/node": "^20",
     "@types/react": "^19",

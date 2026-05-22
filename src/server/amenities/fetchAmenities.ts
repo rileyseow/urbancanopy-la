@@ -1,6 +1,7 @@
 import { supabase } from '@/server/supabase';
+import type { AmenityFC } from '@/types/amenities.types';
 
-const fetchAmenities = async () => {
+const fetchAmenities = async (): Promise<AmenityFC> => {
   const { data, error } = await supabase
     .from('amenities')
     .select('id, geom, amenity_type, name');
@@ -13,7 +14,8 @@ const fetchAmenities = async () => {
     throw new Error('Failed to fetch amenities data');
   }
 
-  const geojson = {
+  // return as geojson
+  return {
     type: 'FeatureCollection',
     features: data.map(f => ({
       type: 'Feature',
@@ -25,8 +27,6 @@ const fetchAmenities = async () => {
       },
     })),
   };
-
-  return geojson;
 };
 
 export default fetchAmenities;

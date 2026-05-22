@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useMap } from 'react-map-gl/maplibre';
+import {
+  useMap,
+  type MapLayerMouseEvent,
+} from 'react-map-gl/maplibre';
 
-import type { MapLibreFeature } from '@/types/map';
+import type { MapLibreFeature } from '@/types/map.types';
 
 /**
  * Custom hook to manage tooltips for MapLibre layers.
@@ -22,7 +25,7 @@ const useTooltip = ({
     useState<MapLibreFeature | null>(null);
 
   const handleMouseMove = useCallback(
-    (e: any) => {
+    (e: MapLayerMouseEvent) => {
       if (!map) {
         return;
       }
