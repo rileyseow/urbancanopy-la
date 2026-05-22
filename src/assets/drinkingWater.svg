@@ -1,0 +1,14 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <circle
+    fill="#3B82F6"
+    stroke="#fff"
+    cx="24"
+    cy="24"
+    r="20"
+    strokewidth="2.5"
+  />
+ <path
+    fill="#fff"
+    d="M24 13C24 13 16 22 16 28C16 32.4 19.6 36 24 36C28.4 36 32 32.4 32 28C32 22 24 13 24 13Z"
+  />
+</svg>

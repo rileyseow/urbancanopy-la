@@ -2,6 +2,7 @@
 
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
+import AmenitiesLayer from '@/client/amenities/AmenitiesLayer';
 import ParksLayer from '@/client/parks/ParksLayer';
 import MapControls from '@/client/MapControls';
 import {
@@ -23,6 +24,7 @@ const Map = () => {
     >
       <MapControls />
       <ParksLayer />
+      <AmenitiesLayer />
     </MapLibreMap>
   );
 };
