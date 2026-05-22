@@ -11,24 +11,20 @@ import useTooltip from '@/client/hooks/useTooltip';
 const AmenitiesLayer = () => {
   const { data } = useAmenities();
 
-  /**
-   * @todo convert useMapImage to take in multiple images
-   * and return loading states arr
-   */
-  const isBicycleParkingImageLoaded = useMapImage({
-    id: 'bicycle-parking-icon',
-    src: bicycleParkingIconUrl,
-  });
-
-  const isDrinkingWaterImageLoaded = useMapImage({
-    id: 'drinking-water-icon',
-    src: drinkingWaterIconUrl,
-  });
-
-  const isToiletImageLoaded = useMapImage({
-    id: 'toilet-icon',
-    src: toiletIconUrl,
-  });
+  const areImagesLoaded = useMapImage([
+    {
+      id: 'bicycle-parking-icon',
+      src: bicycleParkingIconUrl,
+    },
+    {
+      id: 'drinking-water-icon',
+      src: drinkingWaterIconUrl,
+    },
+    {
+      id: 'toilet-icon',
+      src: toiletIconUrl,
+    },
+  ]);
 
   const { hoveredFeature } = useTooltip({
     layerIds: [
@@ -38,12 +34,7 @@ const AmenitiesLayer = () => {
     ],
   });
 
-  if (
-    !data
-    || !isBicycleParkingImageLoaded
-    || !isDrinkingWaterImageLoaded
-    || !isToiletImageLoaded
-  ) {
+  if (!data || !areImagesLoaded) {
     return null;
   }
 

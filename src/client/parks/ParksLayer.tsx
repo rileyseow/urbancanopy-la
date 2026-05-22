@@ -12,10 +12,12 @@ import {
 const ParksPointLayer = () => {
   const { data } = useParksPoints();
 
-  const isImageLoaded = useMapImage({
-    id: 'park-icon',
-    src: parkIconUrl,
-  });
+  const isImageLoaded = useMapImage([
+    {
+      id: 'park-icon',
+      src: parkIconUrl,
+    },
+  ]);
 
   if (!data || !isImageLoaded) {
     return null;
