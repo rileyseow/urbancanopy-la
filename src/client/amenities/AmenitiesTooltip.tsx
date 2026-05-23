@@ -1,6 +1,6 @@
 import type { MapLibreFeature } from '@/types/map.types';
 
-import Tooltip from '@/client/components/Tooltip';
+import Tooltip from '@/client/Tooltip';
 
 const AmenitiesTooltip = ({
   f,
