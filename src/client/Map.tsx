@@ -2,16 +2,18 @@
 
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
-import AmenitiesLayer from '@/client/amenities/AmenitiesLayer';
-import ParksLayer from '@/client/parks/ParksLayer';
 import MapControls from '@/client/MapControls';
+import { LAYERS } from '@/constants/LAYERS';
 import {
   MAP_CENTER,
   MAP_MAX_BOUNDS,
   MAP_ZOOM,
 } from '@/constants/MAP';
+import useMapStore from '@/stores/useMapStore';
 
 const Map = () => {
+  const visibleLayers = useMapStore(s => s.visibleLayers);
+
   return (
     <MapLibreMap
       mapStyle='https://tiles.openfreemap.org/styles/bright'
@@ -23,8 +25,9 @@ const Map = () => {
       maxBounds={MAP_MAX_BOUNDS}
     >
       <MapControls />
-      <ParksLayer />
-      <AmenitiesLayer />
+      {LAYERS.map(({ component: Component, id }) =>
+        visibleLayers[id] ? <Component key={id} /> : null
+      )}
     </MapLibreMap>
   );
 };

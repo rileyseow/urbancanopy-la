@@ -4,6 +4,7 @@ import {
   ScaleControl,
 } from 'react-map-gl/maplibre';
 
+import LayerControl from '@/client/LayerControl';
 import SiteLogo from '@/client/SiteLogo';
 
 const MapControls = () => {
@@ -14,6 +15,7 @@ const MapControls = () => {
   return (
     <>
       <SiteLogo />
+      <LayerControl />
       <NavigationControl
         position='top-right'
         showZoom
