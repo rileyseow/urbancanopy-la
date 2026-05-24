@@ -7,6 +7,7 @@ import AmenitiesTooltip from '@/client/amenities/AmenitiesTooltip';
 import useAmenities from '@/client/amenities/useAmenities';
 import useTooltip from '@/client/hooks/useTooltip';
 import useMapImage from '@/client/hooks/useMapImage';
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const AmenitiesSource = () => {
   const { data } = useAmenities();
@@ -28,9 +29,9 @@ const AmenitiesSource = () => {
 
   const { hoveredFeature } = useTooltip({
     layerIds: [
-      'bicycle-parking-layer',
-      'drinking-water-layer',
-      'toilets-layer',
+      MAP_LAYER_IDS.bicycleParking,
+      MAP_LAYER_IDS.drinkingWater,
+      MAP_LAYER_IDS.toilets,
     ],
   });
 

@@ -8,6 +8,7 @@ import {
   useParksPoints,
   useParksPolygons,
 } from '@/client/parks/useParks';
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const ParksSource = () => {
   const { data: pointsData } = useParksPoints();
@@ -22,8 +23,8 @@ const ParksSource = () => {
 
   const { hoveredFeature } = useTooltip({
     layerIds: [
-      'parks-polygons-layer',
-      'parks-points-layer',
+      MAP_LAYER_IDS.parksPolygons,
+      MAP_LAYER_IDS.parksPoints,
     ],
   });
 

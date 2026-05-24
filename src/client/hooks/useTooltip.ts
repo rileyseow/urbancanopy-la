@@ -4,10 +4,8 @@ import {
   type MapLayerMouseEvent,
 } from 'react-map-gl/maplibre';
 
-import type {
-  MapLibreFeature,
-  MapLayerId,
-} from '@/types/map.types';
+import type { MapLayerId } from '@/constants/MAP_LAYER_IDS';
+import type { MapLibreFeature } from '@/types/map.types';
 
 /**
  * Custom hook to manage tooltips for MapLibre layers.

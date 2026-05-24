@@ -1,9 +1,11 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+
 const DrinkingWaterLayer = () => {
   return (
     <Layer
-      id='drinking-water-layer'
+      id={MAP_LAYER_IDS.drinkingWater}
       source='amenities-source'
       type='symbol'
       filter={[

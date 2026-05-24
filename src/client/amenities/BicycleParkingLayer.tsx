@@ -1,9 +1,11 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+
 const BicycleParkingLayer = () => {
   return (
     <Layer
-      id='bicycle-parking-layer'
+      id={MAP_LAYER_IDS.bicycleParking}
       source='amenities-source'
       type='symbol'
       filter={[

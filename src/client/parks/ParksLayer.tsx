@@ -1,10 +1,12 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+
 const ParksLayer = () => {
   return (
     <>
       <Layer
-        id='parks-points-layer'
+        id={MAP_LAYER_IDS.parksPoints}
         source='parks-points-source'
         type='symbol'
         filter={['==', ['geometry-type'], 'Point']}
@@ -15,7 +17,7 @@ const ParksLayer = () => {
         }}
       />
       <Layer
-        id='parks-polygons-layer'
+        id={MAP_LAYER_IDS.parksPolygons}
         source='parks-polygons-source'
         type='fill'
         filter={[

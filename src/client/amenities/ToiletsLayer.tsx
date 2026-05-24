@@ -1,9 +1,11 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+
 const ToiletsLayer = () => {
   return (
     <Layer
-      id='toilets-layer'
+      id={MAP_LAYER_IDS.toilets}
       source='amenities-source'
       type='symbol'
       filter={[
