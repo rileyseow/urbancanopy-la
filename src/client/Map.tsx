@@ -4,6 +4,7 @@ import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
 import MapControls from '@/client/MapControls';
 import { LAYERS } from '@/constants/LAYERS';
+import { SOURCES } from '@/constants/SOURCES';
 import {
   MAP_CENTER,
   MAP_MAX_BOUNDS,
@@ -25,8 +26,13 @@ const Map = () => {
       maxBounds={MAP_MAX_BOUNDS}
     >
       <MapControls />
-      {LAYERS.map(({ component: Component, id }) =>
-        visibleLayers[id] ? <Component key={id} /> : null
+      {SOURCES.map(({ component: SourceComponent, id }) => (
+        <SourceComponent key={id} />
+      ))}
+      {LAYERS.map(({ component: LayerComponent, id }) =>
+        visibleLayers[id] ?
+          <LayerComponent key={id} />
+        : null
       )}
     </MapLibreMap>
   );
