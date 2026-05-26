@@ -23,7 +23,7 @@ const fetchAmenities = async (): Promise<AmenityFC> => {
       properties: {
         id: f.id,
         amenity_type: f.amenity_type,
-        name: f.name,
+        name: f.name || undefined,
       },
     })),
   };

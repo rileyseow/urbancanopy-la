@@ -41,31 +41,31 @@ export type TransitRouteProperties = {
    * Color associated with the route
    * @example 'BF0D3E'
    */
-  route_color: string | null;
+  route_color?: string;
 
   /**
    * Description of the route
    * @example 'W HOLLYWOOD-DTWN LA -AVALON STA VIA MELROSE-AVALON'
    */
-  route_desc: string | null;
+  route_desc?: string;
 
   /**
    * Full route name
    * @example 'Metro Local Line'
    */
-  route_long_name: string | null;
+  route_long_name?: string;
 
   /**
    * Abbreviated route name
    * @example '10/48'
    */
-  route_short_name: string | null;
+  route_short_name?: string;
 
   /**
    * White or black associated as foreground against `route_color`
    * @example 'FFFFFF'
    */
-  route_text_color: string | null;
+  route_text_color?: string;
 
   /**
    * Enum for the type of route
@@ -76,7 +76,7 @@ export type TransitRouteProperties = {
   /**
    * URL for further route and operator information
    */
-  route_url: string | null;
+  route_url?: string;
 };
 
 export type TransitStopProperties = {

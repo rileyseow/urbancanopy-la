@@ -20,7 +20,7 @@ export type AmenityProperties = {
    * Name of the amenity
    * @example 'Bicycle Compound B3'
    */
-  name: string | null;
+  name?: string;
 };
 
 export type AmenityFC = FeatureCollection<
