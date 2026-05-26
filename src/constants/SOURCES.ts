@@ -1,5 +1,6 @@
 import AmenitiesSource from '@/client/amenities/AmenitiesSource';
 import ParksSource from '@/client/parks/ParksSource';
+import TransitSource from '@/client/transit/TransitSource';
 
 /**
  * @constant
@@ -16,6 +17,10 @@ export const SOURCES = [
   {
     id: 'parksSource',
     component: ParksSource,
+  },
+  {
+    id: 'transitSource',
+    component: TransitSource,
   },
 ] as const;
 

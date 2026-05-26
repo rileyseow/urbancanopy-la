@@ -2,7 +2,9 @@ import BicycleParkingLayer from '@/client/amenities/BicycleParkingLayer';
 import DrinkingWaterLayer from '@/client/amenities/DrinkingWaterLayer';
 import ToiletsLayer from '@/client/amenities/ToiletsLayer';
 import ParksLayer from '@/client/parks/ParksLayer';
+import TransitLayer from '@/client/transit/TransitLayer';
 
+import BusSvg from '@/assets/bus.svg';
 import ParkSvg from '@/assets/park.svg';
 import ToiletSvg from '@/assets/toilet.svg';
 import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
@@ -27,6 +29,13 @@ export const LAYERS = [
     isVisibleByDefault: true,
   },
   {
+    id: 'drinkingWater',
+    label: 'Water Refill',
+    icon: DrinkingWaterSvg,
+    component: DrinkingWaterLayer,
+    isVisibleByDefault: true,
+  },
+  {
     id: 'parks',
     label: 'Parks',
     icon: ParkSvg,
@@ -41,10 +50,10 @@ export const LAYERS = [
     isVisibleByDefault: true,
   },
   {
-    id: 'drinkingWater',
-    label: 'Water Refill',
-    icon: DrinkingWaterSvg,
-    component: DrinkingWaterLayer,
+    id: 'transit',
+    label: 'Transit',
+    icon: BusSvg,
+    component: TransitLayer,
     isVisibleByDefault: true,
   },
 ] as const;

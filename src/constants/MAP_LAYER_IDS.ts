@@ -9,6 +9,8 @@ export const MAP_LAYER_IDS = {
   parksPolygons: 'parks-polygons-layer',
   parksPoints: 'parks-points-layer',
   toilets: 'toilets-layer',
+  transitRoutes: 'transit-routes-layer',
+  transitStops: 'transit-stops-layer',
 } as const;
 
 export type MapLayerId =
