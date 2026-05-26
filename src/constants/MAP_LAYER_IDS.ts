@@ -11,6 +11,7 @@ export const MAP_LAYER_IDS = {
   toilets: 'toilets-layer',
   transitRoutes: 'transit-routes-layer',
   transitStops: 'transit-stops-layer',
+  transitMetroStops: 'transit-metro-stops-layer',
 } as const;
 
 export type MapLayerId =

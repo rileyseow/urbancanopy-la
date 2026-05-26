@@ -1,5 +1,7 @@
 import { Source } from 'react-map-gl/maplibre';
 
+import metroStopIconUrl from '@/assets/metroStop.svg?url';
+import useMapImage from '@/client/hooks/useMapImage';
 import useTooltip from '@/client/hooks/useTooltip';
 import {
   TransitRoutesTooltip,
@@ -15,14 +17,22 @@ const TransitSource = () => {
   const { data: routesData } = useTransitRoutes();
   const { data: stopsData } = useTransitStops();
 
+  const isImageLoaded = useMapImage([
+    {
+      id: 'metro-stop-icon',
+      src: metroStopIconUrl,
+    },
+  ]);
+
   const { hoveredFeature } = useTooltip({
     layerIds: [
       MAP_LAYER_IDS.transitRoutes,
       MAP_LAYER_IDS.transitStops,
+      MAP_LAYER_IDS.transitMetroStops,
     ],
   });
 
-  if (!routesData || !stopsData) {
+  if (!routesData || !stopsData || !isImageLoaded) {
     return null;
   }
 

@@ -35,13 +35,45 @@ const TransitLayer = () => {
         id={MAP_LAYER_IDS.transitStops}
         source='transit-stops-source'
         type='circle'
+        beforeId={MAP_LAYER_IDS.bicycleParking}
         minzoom={TRANSIT_STOPS_MIN_ZOOM}
-        filter={['==', ['geometry-type'], 'Point']}
+        filter={[
+          'all',
+          ['==', ['geometry-type'], 'Point'],
+          [
+            '!',
+            [
+              'in',
+              ['get', 'route_type'],
+              ['literal', [0, 1]],
+            ],
+          ],
+        ]}
         paint={{
           'circle-radius': 3,
-          'circle-color': '#d5dade',
+          'circle-color': '#5b6b7c',
           'circle-stroke-width': 1,
-          'circle-stroke-color': '#5b6b7c',
+          'circle-stroke-color': '#000',
+        }}
+      />
+      <Layer
+        id={MAP_LAYER_IDS.transitMetroStops}
+        source='transit-stops-source'
+        type='symbol'
+        beforeId={MAP_LAYER_IDS.bicycleParking}
+        filter={[
+          'all',
+          ['==', ['geometry-type'], 'Point'],
+          [
+            'in',
+            ['get', 'route_type'],
+            ['literal', [0, 1]],
+          ],
+        ]}
+        layout={{
+          'icon-image': 'metro-stop-icon',
+          'icon-size': 0.2,
+          'icon-allow-overlap': true,
         }}
       />
     </>
