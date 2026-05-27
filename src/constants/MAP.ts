@@ -17,9 +17,23 @@ export const MAP_MAX_BOUNDS: Extract<
 
 /**
  * @constant
+ * @description The map style spec
+ * @see {@link https://openfreemap.org/}
+ */
+export const MAP_STYLE =
+  'https://tiles.openfreemap.org/styles/bright';
+
+/**
+ * @constant
  * @description The initial zoom level of the map
  */
 export const MAP_ZOOM = 10;
+
+/**
+ * @constant
+ * @description The minimum zoom level for 3d buildings to be visible
+ */
+export const BUILDINGS_MIN_ZOOM = 14;
 
 /**
  * @constant
