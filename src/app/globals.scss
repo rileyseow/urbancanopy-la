@@ -3,7 +3,9 @@
 :root {
   --primary: #{palette.$green-pea};
   --surface: #{palette.$white};
+  --surface-variant: #{palette.$alabaster};
   --on-surface: #{palette.$cod-gray};
+  --on-surface-variant: #{palette.$emperor};
   --outline: #{palette.$gray-chateau};
   --outline-variant: #{palette.$iron};
 }
@@ -12,7 +14,9 @@
   :root {
     --primary: #{palette.$green-pea};
     --surface: #{palette.$cod-gray};
+    --surface-variant: #{palette.$mine-shaft};
     --on-surface: #{palette.$white};
+    --on-surface-variant: #{palette.$emperor};
     --outline: #{palette.$gray-chateau};
     --outline-variant: #{palette.$iron};
   }

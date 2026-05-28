@@ -5,6 +5,7 @@ import {
 } from 'react-map-gl/maplibre';
 
 import LayerControl from '@/client/LayerControl';
+import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
 
 const MapControls = () => {
@@ -32,6 +33,7 @@ const MapControls = () => {
         position='bottom-right'
         unit='imperial'
       />
+      <LocationInsights />
     </>
   );
 };

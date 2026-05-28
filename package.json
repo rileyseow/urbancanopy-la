@@ -11,6 +11,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md,svg}\""
   },
   "dependencies": {
+    "@meteocons/svg-static": "^0.1.0",
     "@radix-ui/react-switch": "^1.2.6",
     "@supabase/supabase-js": "^2.106.1",
     "@tanstack/react-query": "^5.100.11",

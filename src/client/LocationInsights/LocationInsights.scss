@@ -1,0 +1,93 @@
+@use '../../app/palette';
+
+.LocationInsights {
+  position: absolute;
+  display: grid;
+  grid-template: repeat(2, min-content) / 2fr 1.5fr;
+  bottom: 16px;
+  left: 16px;
+  row-gap: 4px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface-variant);
+  background-color: var(--surface);
+  white-space: nowrap;
+  cursor: default;
+
+  .heavy {
+    color: var(--on-surface);
+  }
+
+  .temperature-summary {
+    display: grid;
+    grid-template: 1fr min-content min-content / repeat(
+        2,
+        min-content
+      );
+    align-items: center;
+    column-gap: 4px;
+    padding: 8px 24px 8px 0;
+    border-right: 1px solid var(--outline-variant);
+
+    svg.weather-icon {
+      grid-area: 1 / 1 / -1 / 2;
+      width: 72px;
+    }
+
+    b.temp {
+      font-size: 28px;
+    }
+  }
+
+  .weather-metadata {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+
+    > .heat-risk,
+    > .uv-index {
+      display: grid;
+      grid-template:
+        repeat(2, min-content)
+        / min-content 1fr;
+
+      svg {
+        grid-row: 1 / -1;
+        height: 100%;
+      }
+
+      > b {
+        font-size: 14px;
+      }
+    }
+
+    > .heat-risk {
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--outline-variant);
+
+      svg {
+        color: palette.$red;
+      }
+    }
+
+    > .uv-index {
+      padding-top: 4px;
+    }
+  }
+
+  .user-location-text {
+    grid-area: 2 / 1 / 3 / -1;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 4px;
+    border-radius: 10px;
+    background-color: var(--surface-variant);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
