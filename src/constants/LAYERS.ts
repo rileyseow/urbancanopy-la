@@ -1,14 +1,15 @@
+import BicycleParkingSvg from '@/assets/bicycleParking.svg';
+import BusSvg from '@/assets/bus.svg';
+import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
+import ParkSvg from '@/assets/park.svg';
+import TemperatureRasterSvg from '@/assets/temperatureRaster.svg';
+import ToiletSvg from '@/assets/toilet.svg';
 import BicycleParkingLayer from '@/client/amenities/BicycleParkingLayer';
 import DrinkingWaterLayer from '@/client/amenities/DrinkingWaterLayer';
 import ToiletsLayer from '@/client/amenities/ToiletsLayer';
 import ParksLayer from '@/client/parks/ParksLayer';
 import TransitLayer from '@/client/transit/TransitLayer';
-
-import BusSvg from '@/assets/bus.svg';
-import ParkSvg from '@/assets/park.svg';
-import ToiletSvg from '@/assets/toilet.svg';
-import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
-import BicycleParkingSvg from '@/assets/bicycleParking.svg';
+import TemperatureLayer from '@/client/temperature/TemperatureLayer';
 
 /**
  * @constant
@@ -55,6 +56,13 @@ export const LAYERS = [
     icon: BusSvg,
     component: TransitLayer,
     isVisibleByDefault: true,
+  },
+  {
+    id: 'temperature',
+    label: 'Temperature',
+    icon: TemperatureRasterSvg,
+    component: TemperatureLayer,
+    isVisibleByDefault: false,
   },
 ] as const;
 

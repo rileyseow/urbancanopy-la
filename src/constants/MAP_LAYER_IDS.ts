@@ -9,6 +9,8 @@ export const MAP_LAYER_IDS = {
   drinkingWater: 'drinking-water-layer',
   parksPolygons: 'parks-polygons-layer',
   parksPoints: 'parks-points-layer',
+  temperature: 'temperature-layer',
+  temperatureLabels: 'temperature-labels-layer',
   toilets: 'toilets-layer',
   transitRoutes: 'transit-routes-layer',
   transitStops: 'transit-stops-layer',

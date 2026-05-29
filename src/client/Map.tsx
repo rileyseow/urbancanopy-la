@@ -1,5 +1,7 @@
 'use client';
 
+import { omProtocol } from '@openmeteo/weather-map-layer';
+import maplibregl from 'maplibre-gl';
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
 import BuildingsLayer from '@/client/BuildingsLayer';
@@ -13,6 +15,8 @@ import {
   MAP_ZOOM,
 } from '@/constants/MAP';
 import useMapStore from '@/stores/useMapStore';
+
+maplibregl.addProtocol('om', omProtocol); // implemented in `TemperatureSource`
 
 const Map = () => {
   const visibleLayers = useMapStore(s => s.visibleLayers);

@@ -1,0 +1,43 @@
+import { Layer } from 'react-map-gl/maplibre';
+
+import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+
+const TemperatureLayer = () => {
+  return (
+    <>
+      <Layer
+        id={MAP_LAYER_IDS.temperature}
+        source='temperature-source'
+        beforeId={MAP_LAYER_IDS.transitRoutes}
+        type='raster'
+        paint={{
+          'raster-opacity': 0.5,
+        }}
+      />
+      <Layer
+        id={MAP_LAYER_IDS.temperatureLabels}
+        source='temperature-labels-source'
+        source-layer='grid'
+        type='symbol'
+        layout={{
+          'text-font': ['Noto Sans Regular'],
+          'text-field': [
+            'to-string',
+            [
+              'round',
+              ['+', ['*', ['get', 'value'], 1.8], 32], // convert c to f
+            ],
+          ],
+          'text-size': 12,
+        }}
+        paint={{
+          'text-color': '#000',
+          'text-halo-color': '#fff',
+          'text-halo-width': 1,
+        }}
+      />
+    </>
+  );
+};
+
+export default TemperatureLayer;
