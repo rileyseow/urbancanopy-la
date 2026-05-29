@@ -1,21 +1,34 @@
 import CodePurpleSvg from '@meteocons/svg-static/flat/code-purple.svg';
-import ThermometerSvg from '@meteocons/svg-static/monochrome/thermometer.svg';
+import PollenWeedSvg from '@meteocons/svg-static/flat/pollen-weed.svg';
 
 import TargetSvg from '@/assets/target.svg';
-import calculateHeatRisk from '@/client/LocationInsights/calculateHeatRisk';
 import { getWeatherCode } from '@/client/LocationInsights/getWeatherCode';
-import { useWeather } from '@/client/LocationInsights/useWeather';
+import {
+  useWeatherForecast,
+  useWeatherAQI,
+} from '@/client/LocationInsights/useWeather';
 
 import './LocationInsights.scss';
 
 const LocationInsights = () => {
-  const { data, error, isLoading } = useWeather();
+  const { data, error, isLoading } = useWeatherForecast();
 
-  if (error || !data || isLoading) {
+  const {
+    data: aqiData,
+    error: aqiError,
+    isLoading: aqiIsLoading,
+  } = useWeatherAQI();
+
+  if (
+    error
+    || aqiError
+    || !data
+    || !aqiData
+    || isLoading
+    || aqiIsLoading
+  ) {
     return null;
   }
-
-  const heatRisk = calculateHeatRisk(data);
 
   const {
     apparentTemperature,
@@ -44,9 +57,9 @@ const LocationInsights = () => {
       </div>
       <div className='weather-metadata'>
         <div className='heat-risk'>
-          <ThermometerSvg />
-          <span>Heat Risk</span>
-          <b className='heavy'>{heatRisk}</b>
+          <PollenWeedSvg />
+          <span>AQI</span>
+          <b className='heavy'>{aqiData.aqi}</b>
         </div>
         <div className='uv-index'>
           <CodePurpleSvg />

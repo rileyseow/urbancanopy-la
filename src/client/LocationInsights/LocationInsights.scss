@@ -4,8 +4,8 @@
   position: absolute;
   display: grid;
   grid-template: repeat(2, min-content) / 2fr 1.5fr;
-  bottom: 16px;
-  left: 16px;
+  top: 16px;
+  right: 16px;
   row-gap: 4px;
   padding: 12px;
   border-radius: 8px;

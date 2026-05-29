@@ -7,7 +7,7 @@ export type HeatRisk =
 /**
  * @see {@link https://open-meteo.com/en/docs}
  */
-export type WeatherProperties = {
+export type WeatherForecastProperties = {
   /**
    * The perceived feels-like temperature combining wind chill
    * factor, relative humidity and solar radiation.
@@ -52,4 +52,14 @@ export type WeatherProperties = {
    * @example 10.4
    */
   windSpeed: number;
+};
+
+export type WeatherAQIProperties = {
+  /**
+   * Consolidated United States Air Quality Index (AQI). Returns
+   * the maximum of all individual indices calculated for different
+   * particulate matter and gases, e.g. `us_aqi_pm10`, `us_aqi_nitrogen_dioxide`
+   * @example 49
+   */
+  aqi: number;
 };

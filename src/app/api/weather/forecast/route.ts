@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import fetchWeather from '@/server/weather/fetchWeather';
+import { fetchWeatherForecast } from '@/server/weather/fetchWeather';
 
 export const GET = async () => {
-  const data = await fetchWeather();
+  const data = await fetchWeatherForecast();
   return NextResponse.json(data);
 };

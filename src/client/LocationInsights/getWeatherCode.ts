@@ -10,7 +10,7 @@ import SnowSvg from '@meteocons/svg-static/flat/snow.svg';
 import ThunderstormsSvg from '@meteocons/svg-static/flat/thunderstorms.svg';
 import type { ComponentType, SVGProps } from 'react';
 
-import type { WeatherProperties } from '@/types/weather.types';
+import type { WeatherForecastProperties } from '@/types/weather.types';
 
 type Weather =
   | 'clear'
@@ -41,7 +41,7 @@ const WEATHER_ICONS: Record<
 };
 
 export const getWeatherCode = (
-  code: WeatherProperties['weatherCode']
+  code: WeatherForecastProperties['weatherCode']
 ): {
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
   label: string;

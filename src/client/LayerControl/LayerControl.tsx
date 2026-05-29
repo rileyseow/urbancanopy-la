@@ -34,7 +34,7 @@ const LayerControlList = () => {
 };
 
 const LayerControl = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <div

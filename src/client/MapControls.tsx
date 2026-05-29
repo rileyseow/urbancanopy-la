@@ -8,15 +8,23 @@ import LayerControl from '@/client/LayerControl';
 import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
 
+import './MapControls.scss';
+
 const MapControls = () => {
   const handleOutOfMaxBounds = () => {
     alert('You are outside the maximum bounds of the map.');
   };
 
   return (
-    <>
+    <div className='MapControls'>
       <SiteLogo />
       <LayerControl />
+      <LocationInsights />
+      <GeolocateControl
+        position='top-right'
+        positionOptions={{ enableHighAccuracy: true }}
+        onOutOfMaxBounds={handleOutOfMaxBounds}
+      />
       <NavigationControl
         position='top-right'
         showZoom
@@ -24,17 +32,11 @@ const MapControls = () => {
         visualizePitch
         visualizeRoll
       />
-      <GeolocateControl
-        position='top-right'
-        positionOptions={{ enableHighAccuracy: true }}
-        onOutOfMaxBounds={handleOutOfMaxBounds}
-      />
       <ScaleControl
         position='bottom-right'
         unit='imperial'
       />
-      <LocationInsights />
-    </>
+    </div>
   );
 };
 
