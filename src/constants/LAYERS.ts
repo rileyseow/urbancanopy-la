@@ -1,6 +1,7 @@
 import BicycleParkingSvg from '@/assets/bicycleParking.svg';
 import BusSvg from '@/assets/bus.svg';
 import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
+import HexagonGreenSvg from '@/assets/hexagonGreen.svg';
 import ParkSvg from '@/assets/park.svg';
 import TemperatureRasterSvg from '@/assets/temperatureRaster.svg';
 import ToiletSvg from '@/assets/toilet.svg';
@@ -9,6 +10,7 @@ import DrinkingWaterLayer from '@/client/amenities/DrinkingWaterLayer';
 import ToiletsLayer from '@/client/amenities/ToiletsLayer';
 import ParksLayer from '@/client/parks/ParksLayer';
 import TransitLayer from '@/client/transit/TransitLayer';
+import TreeDensityLayer from '@/client/treeDensity/TreeDensityLayer';
 import TemperatureLayer from '@/client/temperature/TemperatureLayer';
 
 /**
@@ -56,6 +58,13 @@ export const LAYERS = [
     icon: BusSvg,
     component: TransitLayer,
     isVisibleByDefault: true,
+  },
+  {
+    id: 'treeDensity',
+    label: 'Tree Density',
+    icon: HexagonGreenSvg,
+    component: TreeDensityLayer,
+    isVisibleByDefault: false,
   },
   {
     id: 'temperature',

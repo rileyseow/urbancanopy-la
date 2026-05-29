@@ -2,6 +2,7 @@ import AmenitiesSource from '@/client/amenities/AmenitiesSource';
 import ParksSource from '@/client/parks/ParksSource';
 import TemperatureSource from '@/client/temperature/TemperatureSource';
 import TransitSource from '@/client/transit/TransitSource';
+import TreeDensitySource from '@/client/treeDensity/TreeDensitySource';
 
 /**
  * @constant
@@ -26,6 +27,10 @@ export const SOURCES = [
   {
     id: 'transitSource',
     component: TransitSource,
+  },
+  {
+    id: 'treeDensitySource',
+    component: TreeDensitySource,
   },
 ] as const;
 

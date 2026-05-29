@@ -11,6 +11,7 @@ export const MAP_LAYER_IDS = {
   parksPoints: 'parks-points-layer',
   temperature: 'temperature-layer',
   temperatureLabels: 'temperature-labels-layer',
+  treeDensity: 'tree-density-layer',
   toilets: 'toilets-layer',
   transitRoutes: 'transit-routes-layer',
   transitStops: 'transit-stops-layer',

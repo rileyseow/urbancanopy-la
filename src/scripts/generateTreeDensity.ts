@@ -12,7 +12,7 @@ import { latLngToCell, cellToBoundary } from 'h3-js';
 const INPUT = './2022_Urban_Trees.geojson';
 const OUTPUT = './tree-density.geojson';
 
-const H3_RESOLUTION = 8;
+const H3_RESOLUTION = 9;
 
 const counts = new Map<string, number>(); // map from h3 identifier to count of points in cell
 let processed = 0; // iterator for console logging
