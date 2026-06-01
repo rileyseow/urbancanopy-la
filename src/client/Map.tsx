@@ -5,6 +5,7 @@ import maplibregl from 'maplibre-gl';
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
 import BuildingsLayer from '@/client/BuildingsLayer';
+import HillshadeLayer from '@/client/HillshadeLayer';
 import MapControls from '@/client/MapControls';
 import { LAYERS } from '@/constants/LAYERS';
 import { SOURCES } from '@/constants/SOURCES';
@@ -35,6 +36,7 @@ const Map = () => {
       touchPitch
     >
       <MapControls />
+      <HillshadeLayer />
       <BuildingsLayer />
       {SOURCES.map(({ component: SourceComponent, id }) => (
         <SourceComponent key={id} />
