@@ -1,25 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
-export const useParksPoints = () => {
+export const useParks = () => {
   return useQuery({
-    queryKey: ['parks', 'points'],
+    queryKey: ['parks'],
     queryFn: async () => {
-      const response = await fetch('/api/poi/parks/points');
-      return response.json();
-    },
-    staleTime: 1000 * 60 * 60,
-    gcTime: 1000 * 60 * 60 * 24,
-    refetchOnWindowFocus: false,
-  });
-};
-
-export const useParksPolygons = () => {
-  return useQuery({
-    queryKey: ['parks', 'polygons'],
-    queryFn: async () => {
-      const response = await fetch(
-        '/api/poi/parks/polygons'
-      );
+      const response = await fetch('/api/poi/parks');
       return response.json();
     },
     staleTime: 1000 * 60 * 60,

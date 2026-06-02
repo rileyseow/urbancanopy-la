@@ -1,63 +1,50 @@
 import { supabase } from '@/server/supabase';
-import type {
-  ParkPointFC,
-  ParkPolygonFC,
-} from '@/types/parks.types';
+import type { ParkFC } from '@/types/parks.types';
 
-export const fetchParksPoints =
-  async (): Promise<ParkPointFC> => {
-    const { data, error } = await supabase
-      .from('parks_points')
-      .select('id, geom, name');
+const COLS = 'id, geometry, acres, managing_agency, name';
 
-    if (error) {
-      console.error(
-        'Error fetching parks points from Supabase:',
-        error
-      );
-      throw new Error('Failed to fetch parks points data');
-    }
+const fetchParks = async (): Promise<ParkFC> => {
+  // 1740 rows in db - fetch in 2 pages
+  const [
+    { data: page1, error: error1 },
+    { data: page2, error: error2 },
+  ] = await Promise.all([
+    supabase
+      .from('parks')
+      .select(COLS)
+      .order('id')
+      .range(0, 999),
+    supabase
+      .from('parks')
+      .select(COLS)
+      .order('id')
+      .range(1000, 1999),
+  ]);
 
-    // return as geojson
-    return {
-      type: 'FeatureCollection',
-      features: data.map(f => ({
-        type: 'Feature',
-        geometry: f.geom,
-        properties: {
-          id: f.id,
-          name: f.name,
-        },
-      })),
-    };
+  if (error1 || error2) {
+    console.error(
+      'Error fetching parks data from Supabase:',
+      error1 || error2
+    );
+    throw new Error('Failed to fetch parks data');
+  }
+
+  const data = [...page1, ...page2];
+
+  // return as geojson
+  return {
+    type: 'FeatureCollection',
+    features: data.map(f => ({
+      type: 'Feature',
+      geometry: f.geometry,
+      properties: {
+        id: f.id,
+        acres: f.acres,
+        managing_agency: f.managing_agency,
+        name: f.name,
+      },
+    })),
   };
+};
 
-export const fetchParksPolygons =
-  async (): Promise<ParkPolygonFC> => {
-    const { data, error } = await supabase
-      .from('parks_polygons_geojson')
-      .select('id, geom, name');
-
-    if (error) {
-      console.error(
-        'Error fetching parks polygons from Supabase:',
-        error
-      );
-      throw new Error(
-        'Failed to fetch parks polygons data'
-      );
-    }
-
-    // return as geojson
-    return {
-      type: 'FeatureCollection',
-      features: data.map(f => ({
-        type: 'Feature',
-        geometry: f.geom,
-        properties: {
-          id: f.id,
-          name: f.name,
-        },
-      })),
-    };
-  };
+export default fetchParks;

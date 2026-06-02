@@ -1,44 +1,36 @@
 import type {
   FeatureCollection,
   MultiPolygon,
-  Point,
   Polygon,
 } from 'geojson';
 
-export type ParkPointProperties = {
-  /**
-   * Unique identifier for the park point
-   * @example 'node/358781017'
-   */
-  id: string;
-
-  /**
-   * Name of the park
-   * @example 'Boulder Hill Park'
-   */
-  name: string;
-};
-
-export type ParkPolygonProperties = {
+export type ParkProperties = {
   /**
    * Unique identifier for the park polygon
-   * @example 'way/56229293'
+   * @example '12523'
    */
   id: string;
 
   /**
+   * Area of the park in acres
+   * @example 1196.5940163805446
+   */
+  acres: number;
+
+  /**
+   * Agency responsible for the park's management
+   * @example 'Sierra Madre, City of'
+   */
+  managing_agency?: string;
+
+  /**
    * Name of the park
-   * @example 'Jack Nichol Park'
+   * @example 'Sierra Madre City Parkland'
    */
   name: string;
 };
 
-export type ParkPointFC = FeatureCollection<
-  Point,
-  ParkPointProperties
->;
-
-export type ParkPolygonFC = FeatureCollection<
+export type ParkFC = FeatureCollection<
   Polygon | MultiPolygon,
-  ParkPolygonProperties
+  ParkProperties
 >;

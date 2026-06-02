@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import { fetchParksPolygons } from '@/server/parks/fetchParks';
+import fetchParks from '@/server/parks/fetchParks';
 
 export const GET = async () => {
-  const data = await fetchParksPolygons();
+  const data = await fetchParks();
   return NextResponse.json(data);
 };

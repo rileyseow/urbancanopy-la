@@ -4,15 +4,11 @@ import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
 import useTooltip from '@/client/hooks/useTooltip';
 import ParksTooltip from '@/client/parks/ParksTooltip';
-import {
-  useParksPoints,
-  useParksPolygons,
-} from '@/client/parks/useParks';
+import { useParks } from '@/client/parks/useParks';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const ParksSource = () => {
-  const { data: pointsData } = useParksPoints();
-  const { data: polygonsData } = useParksPolygons();
+  const { data } = useParks();
 
   const isImageLoaded = useMapImage([
     {
@@ -23,26 +19,22 @@ const ParksSource = () => {
 
   const { hoveredFeature } = useTooltip({
     layerIds: [
-      MAP_LAYER_IDS.parksPolygons,
-      MAP_LAYER_IDS.parksPoints,
+      MAP_LAYER_IDS.parks,
+      MAP_LAYER_IDS.parksSymbol,
     ],
   });
 
-  if (!pointsData || !polygonsData || !isImageLoaded) {
+  if (!data || !isImageLoaded) {
     return null;
   }
 
   return (
     <>
       <Source
-        id='parks-points-source'
+        id='parks-source'
         type='geojson'
-        data={pointsData}
-      />
-      <Source
-        id='parks-polygons-source'
-        type='geojson'
-        data={polygonsData}
+        data={data}
+        tolerance={0}
       />
       {hoveredFeature && (
         <ParksTooltip f={hoveredFeature} />

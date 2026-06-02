@@ -40,3 +40,9 @@ export const BUILDINGS_MIN_ZOOM = 14;
  * @description The minimum zoom level for transit stops to be visible
  */
 export const TRANSIT_STOPS_MIN_ZOOM = 12;
+
+/**
+ * @constant
+ * @description The maximum zoom level for park symbols to be visible
+ */
+export const PARKS_SYMBOL_MAX_ZOOM = 12;
