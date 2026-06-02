@@ -18,10 +18,7 @@ const ParksSource = () => {
   ]);
 
   const { hoveredFeature } = useTooltip({
-    layerIds: [
-      MAP_LAYER_IDS.parks,
-      MAP_LAYER_IDS.parksSymbol,
-    ],
+    layerIds: [MAP_LAYER_IDS.parks],
   });
 
   if (!data || !isImageLoaded) {
@@ -34,7 +31,6 @@ const ParksSource = () => {
         id='parks-source'
         type='geojson'
         data={data}
-        tolerance={0}
       />
       {hoveredFeature && (
         <ParksTooltip f={hoveredFeature} />
