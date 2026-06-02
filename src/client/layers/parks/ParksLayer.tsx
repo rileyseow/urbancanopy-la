@@ -8,6 +8,7 @@ const ParksLayer = () => {
       id={MAP_LAYER_IDS.parks}
       source='parks-source'
       type='fill'
+      beforeId={MAP_LAYER_IDS.transitRoutes}
       filter={[
         'any',
         ['==', ['geometry-type'], 'Polygon'],
