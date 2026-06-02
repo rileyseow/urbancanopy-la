@@ -1,8 +1,8 @@
 import { Source } from 'react-map-gl/maplibre';
 
 import iceCreamIconUrl from '@/assets/iceCream.svg?url';
-import IceCreamTooltip from '@/client/iceCream/IceCreamTooltip';
-import useIceCream from '@/client/iceCream/useIceCream';
+import IceCreamTooltip from '@/client/layers/iceCream/IceCreamTooltip';
+import useIceCream from '@/client/layers/iceCream/useIceCream';
 import useTooltip from '@/client/hooks/useTooltip';
 import useMapImage from '@/client/hooks/useMapImage';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';

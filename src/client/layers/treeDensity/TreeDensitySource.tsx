@@ -1,8 +1,8 @@
 import { Source } from 'react-map-gl/maplibre';
 
 import useTooltip from '@/client/hooks/useTooltip';
-import TreeDensityTooltip from '@/client/treeDensity/TreeDensityTooltip';
-import { useTreeDensity } from '@/client/treeDensity/useTreeDensity';
+import TreeDensityTooltip from '@/client/layers/treeDensity/TreeDensityTooltip';
+import { useTreeDensity } from '@/client/layers/treeDensity/useTreeDensity';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const TreeDensitySource = () => {

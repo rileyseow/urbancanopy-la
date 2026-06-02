@@ -1,9 +1,9 @@
-import AmenitiesSource from '@/client/amenities/AmenitiesSource';
-import IceCreamSource from '@/client/iceCream/IceCreamSource';
-import ParksSource from '@/client/parks/ParksSource';
-import TemperatureSource from '@/client/temperature/TemperatureSource';
-import TransitSource from '@/client/transit/TransitSource';
-import TreeDensitySource from '@/client/treeDensity/TreeDensitySource';
+import AmenitiesSource from '@/client/layers/amenities/AmenitiesSource';
+import IceCreamSource from '@/client/layers/iceCream/IceCreamSource';
+import ParksSource from '@/client/layers/parks/ParksSource';
+import TemperatureSource from '@/client/layers/temperature/TemperatureSource';
+import TransitSource from '@/client/layers/transit/TransitSource';
+import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
 
 /**
  * @constant

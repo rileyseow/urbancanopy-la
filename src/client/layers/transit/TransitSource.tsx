@@ -6,11 +6,11 @@ import useTooltip from '@/client/hooks/useTooltip';
 import {
   TransitRoutesTooltip,
   TransitStopsTooltip,
-} from '@/client/transit/TransitTooltip';
+} from '@/client/layers/transit/TransitTooltip';
 import {
   useTransitRoutes,
   useTransitStops,
-} from '@/client/transit/useTransit';
+} from '@/client/layers/transit/useTransit';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const TransitSource = () => {

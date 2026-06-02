@@ -6,14 +6,14 @@ import IceCreamSvg from '@/assets/iceCream.svg';
 import ParkSvg from '@/assets/park.svg';
 import TemperatureRasterSvg from '@/assets/temperatureRaster.svg';
 import ToiletSvg from '@/assets/toilet.svg';
-import BicycleParkingLayer from '@/client/amenities/BicycleParkingLayer';
-import DrinkingWaterLayer from '@/client/amenities/DrinkingWaterLayer';
-import ToiletsLayer from '@/client/amenities/ToiletsLayer';
-import IceCreamLayer from '@/client/iceCream/IceCreamLayer';
-import ParksLayer from '@/client/parks/ParksLayer';
-import TransitLayer from '@/client/transit/TransitLayer';
-import TreeDensityLayer from '@/client/treeDensity/TreeDensityLayer';
-import TemperatureLayer from '@/client/temperature/TemperatureLayer';
+import BicycleParkingLayer from '@/client/layers/amenities/BicycleParkingLayer';
+import DrinkingWaterLayer from '@/client/layers/amenities/DrinkingWaterLayer';
+import ToiletsLayer from '@/client/layers/amenities/ToiletsLayer';
+import IceCreamLayer from '@/client/layers/iceCream/IceCreamLayer';
+import ParksLayer from '@/client/layers/parks/ParksLayer';
+import TransitLayer from '@/client/layers/transit/TransitLayer';
+import TreeDensityLayer from '@/client/layers/treeDensity/TreeDensityLayer';
+import TemperatureLayer from '@/client/layers/temperature/TemperatureLayer';
 
 /**
  * @constant

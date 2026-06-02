@@ -4,8 +4,8 @@ import { omProtocol } from '@openmeteo/weather-map-layer';
 import maplibregl from 'maplibre-gl';
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
-import BuildingsLayer from '@/client/BuildingsLayer';
-import HillshadeLayer from '@/client/HillshadeLayer';
+import BuildingsLayer from '@/client/layers/BuildingsLayer';
+import HillshadeLayer from '@/client/layers/HillshadeLayer';
 import MapControls from '@/client/MapControls';
 import { LAYERS } from '@/constants/LAYERS';
 import { SOURCES } from '@/constants/SOURCES';
