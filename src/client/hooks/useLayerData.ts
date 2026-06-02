@@ -5,7 +5,7 @@ export const useBicycleParking = () => {
     queryKey: ['bicycleParking'],
     queryFn: async () => {
       const response = await fetch(
-        '/api/amenities/bicycleParking'
+        '/api/amenities/bicycle-parking'
       );
       return response.json();
     },
@@ -20,7 +20,7 @@ export const useDrinkingWater = () => {
     queryKey: ['drinkingWater'],
     queryFn: async () => {
       const response = await fetch(
-        '/api/amenities/drinkingWater'
+        '/api/amenities/drinking-water'
       );
       return response.json();
     },
@@ -49,7 +49,7 @@ export const useIceCream = () => {
   return useQuery({
     queryKey: ['iceCream'],
     queryFn: async () => {
-      const response = await fetch('/api/iceCream');
+      const response = await fetch('/api/ice-cream');
       return response.json();
     },
     staleTime: 1000 * 60 * 60,
@@ -101,7 +101,7 @@ export const useTreeDensity = () => {
   return useQuery({
     queryKey: ['treeDensity'],
     queryFn: async () => {
-      const response = await fetch('/api/treeDensity');
+      const response = await fetch('/api/tree-density');
       return response.json();
     },
     staleTime: 1000 * 60 * 60,
