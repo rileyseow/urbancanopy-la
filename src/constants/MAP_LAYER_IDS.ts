@@ -8,6 +8,7 @@ export const MAP_LAYER_IDS = {
   buildings: 'buildings-layer',
   drinkingWater: 'drinking-water-layer',
   hillshade: 'hillshade-layer',
+  iceCream: 'ice-cream-layer',
   parksPolygons: 'parks-polygons-layer',
   parksPoints: 'parks-points-layer',
   temperature: 'temperature-layer',

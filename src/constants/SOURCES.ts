@@ -1,4 +1,5 @@
 import AmenitiesSource from '@/client/amenities/AmenitiesSource';
+import IceCreamSource from '@/client/iceCream/IceCreamSource';
 import ParksSource from '@/client/parks/ParksSource';
 import TemperatureSource from '@/client/temperature/TemperatureSource';
 import TransitSource from '@/client/transit/TransitSource';
@@ -15,6 +16,10 @@ export const SOURCES = [
   {
     id: 'amenitiesSource',
     component: AmenitiesSource,
+  },
+  {
+    id: 'iceCreamSource',
+    component: IceCreamSource,
   },
   {
     id: 'parksSource',

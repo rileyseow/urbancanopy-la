@@ -1,5 +1,19 @@
 .Tooltip {
   .maplibregl-popup-content {
-    padding: 4px 8px;
+    padding: 8px 12px;
+    line-height: 100%;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+
+      .small {
+        font-size: 10px;
+        color: var(--on-surface-variant);
+      }
+    }
   }
 }
