@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { fetchTransitStops } from '@/server/transit/fetchTransit';
+import { fetchTransitStops } from '@/server/fetchTransit';
 
 export const GET = async () => {
   const data = await fetchTransitStops();

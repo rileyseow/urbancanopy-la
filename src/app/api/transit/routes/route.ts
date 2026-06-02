@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { fetchTransitRoutes } from '@/server/transit/fetchTransit';
+import { fetchTransitRoutes } from '@/server/fetchTransit';
 
 export const GET = async () => {
   const data = await fetchTransitRoutes();

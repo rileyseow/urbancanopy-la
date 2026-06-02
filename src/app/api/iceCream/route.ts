@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import fetchIceCream from '@/server/iceCream/fetchIceCream';
+import fetchIceCream from '@/server/fetchIceCream';
 
 export const GET = async () => {
   const data = await fetchIceCream();
