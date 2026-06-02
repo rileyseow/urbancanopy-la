@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import fetchAmenities from '@/server/fetchAmenities';
+import { fetchDrinkingWater } from '@/server/fetchAmenities';
 
 export const GET = async () => {
-  const data = await fetchAmenities();
+  const data = await fetchDrinkingWater();
   return NextResponse.json(data);
 };

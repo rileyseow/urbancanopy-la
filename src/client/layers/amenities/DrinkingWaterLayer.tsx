@@ -6,7 +6,7 @@ const DrinkingWaterLayer = () => {
   return (
     <Layer
       id={MAP_LAYER_IDS.drinkingWater}
-      source='amenities-source'
+      source='drinking-water-source'
       type='symbol'
       filter={[
         'all',

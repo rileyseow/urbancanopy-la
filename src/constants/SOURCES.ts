@@ -1,4 +1,6 @@
-import AmenitiesSource from '@/client/layers/amenities/AmenitiesSource';
+import BicycleParkingSource from '@/client/layers/amenities/BicycleParkingSource';
+import DrinkingWaterSource from '@/client/layers/amenities/DrinkingWaterSource';
+import ToiletsSource from '@/client/layers/amenities/ToiletsSource';
 import IceCreamSource from '@/client/layers/iceCream/IceCreamSource';
 import ParksSource from '@/client/layers/parks/ParksSource';
 import TemperatureSource from '@/client/layers/temperature/TemperatureSource';
@@ -14,8 +16,16 @@ import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
  */
 export const SOURCES = [
   {
-    id: 'amenitiesSource',
-    component: AmenitiesSource,
+    id: 'bicycleParkingSource',
+    component: BicycleParkingSource,
+  },
+  {
+    id: 'drinkingWaterSource',
+    component: DrinkingWaterSource,
+  },
+  {
+    id: 'toiletsSource',
+    component: ToiletsSource,
   },
   {
     id: 'iceCreamSource',

@@ -1,20 +1,38 @@
 import { supabase } from '@/server/supabase';
-import type { AmenityFC } from '@/types/amenities.types';
+import type {
+  AmenityFC,
+  AmenityProperties,
+} from '@/types/amenities.types';
 
-const fetchAmenities = async (): Promise<AmenityFC> => {
-  const { data, error } = await supabase
-    .from('amenities')
-    .select('id, geom, amenity_type, name');
+const PAGE_SIZE = 1000;
 
-  if (error) {
-    console.error(
-      'Error fetching amenities from Supabase:',
-      error
-    );
-    throw new Error('Failed to fetch amenities data');
+const fetchAmenityType = async (
+  amenityType: AmenityProperties['amenity_type']
+): Promise<AmenityFC> => {
+  let data = [];
+  let from = 0;
+
+  while (true) {
+    const { data: page, error } = await supabase
+      .from('amenities')
+      .select('id, geom, amenity_type, name')
+      .eq('amenity_type', amenityType)
+      .order('id')
+      .range(from, from + PAGE_SIZE - 1);
+
+    if (error) {
+      throw error;
+    }
+
+    data.push(...page);
+
+    if (page.length < PAGE_SIZE) {
+      break;
+    }
+
+    from += PAGE_SIZE;
   }
 
-  // return as geojson
   return {
     type: 'FeatureCollection',
     features: data.map(f => ({
@@ -29,4 +47,11 @@ const fetchAmenities = async (): Promise<AmenityFC> => {
   };
 };
 
-export default fetchAmenities;
+export const fetchBicycleParking = () =>
+  fetchAmenityType('bicycle_parking');
+
+export const fetchDrinkingWater = () =>
+  fetchAmenityType('drinking_water');
+
+export const fetchToilets = () =>
+  fetchAmenityType('toilets');

@@ -6,7 +6,7 @@ const BicycleParkingLayer = () => {
   return (
     <Layer
       id={MAP_LAYER_IDS.bicycleParking}
-      source='amenities-source'
+      source='bicycle-parking-source'
       type='symbol'
       filter={[
         'all',

@@ -6,7 +6,7 @@ const ToiletsLayer = () => {
   return (
     <Layer
       id={MAP_LAYER_IDS.toilets}
-      source='amenities-source'
+      source='toilets-source'
       type='symbol'
       filter={[
         'all',

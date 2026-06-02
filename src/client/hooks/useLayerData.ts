@@ -1,10 +1,42 @@
 import { useQuery } from '@tanstack/react-query';
 
-export const useAmenities = () => {
+export const useBicycleParking = () => {
   return useQuery({
-    queryKey: ['amenities'],
+    queryKey: ['bicycleParking'],
     queryFn: async () => {
-      const response = await fetch('/api/amenities');
+      const response = await fetch(
+        '/api/amenities/bicycleParking'
+      );
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useDrinkingWater = () => {
+  return useQuery({
+    queryKey: ['drinkingWater'],
+    queryFn: async () => {
+      const response = await fetch(
+        '/api/amenities/drinkingWater'
+      );
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useToilets = () => {
+  return useQuery({
+    queryKey: ['toilets'],
+    queryFn: async () => {
+      const response = await fetch(
+        '/api/amenities/toilets'
+      );
       return response.json();
     },
     staleTime: 1000 * 60 * 60,
