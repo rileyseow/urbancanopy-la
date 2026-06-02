@@ -4,7 +4,7 @@ import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
 import useTooltip from '@/client/hooks/useTooltip';
 import ParksTooltip from '@/client/layers/parks/ParksTooltip';
-import { useParks } from '@/client/layers/parks/useParks';
+import { useParks } from '@/client/hooks/useLayerData';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const ParksSource = () => {

@@ -10,7 +10,7 @@ import {
 import {
   useTransitRoutes,
   useTransitStops,
-} from '@/client/layers/transit/useTransit';
+} from '@/client/hooks/useLayerData';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const TransitSource = () => {
