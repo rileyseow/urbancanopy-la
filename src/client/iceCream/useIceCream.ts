@@ -4,7 +4,7 @@ const useIceCream = () => {
   return useQuery({
     queryKey: ['iceCream'],
     queryFn: async () => {
-      const response = await fetch('/api/poi/iceCream');
+      const response = await fetch('/api/iceCream');
       return response.json();
     },
     staleTime: 1000 * 60 * 60,
