@@ -21,7 +21,11 @@ const fetchAmenityType = async (
       .range(from, from + PAGE_SIZE - 1);
 
     if (error) {
-      throw error;
+      console.error(
+        'Error fetching amenities data from Supabase:',
+        error
+      );
+      throw new Error('Failed to fetch amenities data');
     }
 
     data.push(...page);

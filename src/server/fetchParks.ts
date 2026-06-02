@@ -1,35 +1,35 @@
 import { supabase } from '@/server/supabase';
 import type { ParkFC } from '@/types/parks.types';
 
-const COLS = 'id, geometry, acres, managing_agency, name';
+const PAGE_SIZE = 1000;
 
 const fetchParks = async (): Promise<ParkFC> => {
-  // 1740 rows in db - fetch in 2 pages
-  const [
-    { data: page1, error: error1 },
-    { data: page2, error: error2 },
-  ] = await Promise.all([
-    supabase
-      .from('parks')
-      .select(COLS)
-      .order('id')
-      .range(0, 999),
-    supabase
-      .from('parks')
-      .select(COLS)
-      .order('id')
-      .range(1000, 1999),
-  ]);
+  let data = [];
+  let from = 0;
 
-  if (error1 || error2) {
-    console.error(
-      'Error fetching parks data from Supabase:',
-      error1 || error2
-    );
-    throw new Error('Failed to fetch parks data');
+  while (true) {
+    const { data: page, error } = await supabase
+      .from('parks')
+      .select('id, geometry, acres, managing_agency, name')
+      .order('id')
+      .range(from, from + PAGE_SIZE - 1);
+
+    if (error) {
+      console.error(
+        'Error fetching parks data from Supabase:',
+        error
+      );
+      throw new Error('Failed to fetch parks data');
+    }
+
+    data.push(...page);
+
+    if (page.length < PAGE_SIZE) {
+      break;
+    }
+
+    from += PAGE_SIZE;
   }
-
-  const data = [...page1, ...page2];
 
   // return as geojson
   return {
