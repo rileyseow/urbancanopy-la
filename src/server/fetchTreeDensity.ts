@@ -1,20 +1,37 @@
 import { supabase } from '@/server/supabase';
 import type { TreeDensityFC } from '@/types/treeDensity.types';
 
+const PAGE_SIZE = 1000;
+
 const fetchTreeDensity =
   async (): Promise<TreeDensityFC> => {
-    const { data, error } = await supabase
-      .from('tree_density')
-      .select('h3_index, geometry, tree_count');
+    let data = [];
+    let from = 0;
 
-    if (error) {
-      console.error(
-        'Error fetching tree density polygons from Supabase:',
-        error
-      );
-      throw new Error(
-        'Failed to fetch tree density polygons data'
-      );
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('tree_density')
+        .select('h3_index, geometry, tree_count')
+        .order('h3_index')
+        .range(from, from + PAGE_SIZE - 1);
+
+      if (error) {
+        console.error(
+          'Error fetching tree density data from Supabase:',
+          error
+        );
+        throw new Error(
+          'Failed to fetch tree density data'
+        );
+      }
+
+      data.push(...page);
+
+      if (page.length < PAGE_SIZE) {
+        break;
+      }
+
+      from += PAGE_SIZE;
     }
 
     // return as geojson
