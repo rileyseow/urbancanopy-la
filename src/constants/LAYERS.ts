@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import BicycleParkingSvg from '@/assets/bicycleParking.svg';
 import BusSvg from '@/assets/bus.svg';
 import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
@@ -15,17 +17,19 @@ import TransitLayer from '@/client/layers/transit/TransitLayer';
 import TreeDensityLayer from '@/client/layers/treeDensity/TreeDensityLayer';
 import TemperatureLayer from '@/client/layers/temperature/TemperatureLayer';
 
+type LayerConfig = {
+  id: string;
+  label: string;
+  icon: any;
+  component: FC;
+  isVisibleByDefault: boolean;
+};
+
 /**
  * @constant
  * @description Map layer configurations
- *
- * @property {string} id - Unique identifier for the layer
- * @property {string} label - Display name for the layer
- * @property {any} icon - SVG icon for the layer
- * @property {any} component - MapLibre component that renders the layer
- * @property {boolean} isVisibleByDefault - Whether the layer is toggled on and visible on map load
  */
-export const LAYERS = [
+export const LAYERS: LayerConfig[] = [
   {
     id: 'parks',
     label: 'Parks',
@@ -84,4 +88,4 @@ export const LAYERS = [
   },
 ] as const;
 
-export type LayerConfig = (typeof LAYERS)[number];
+export type LayerId = (typeof LAYERS)[number]['id'];

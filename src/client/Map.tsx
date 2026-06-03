@@ -4,6 +4,7 @@ import { omProtocol } from '@openmeteo/weather-map-layer';
 import maplibregl from 'maplibre-gl';
 import { Map as MapLibreMap } from 'react-map-gl/maplibre';
 
+import TooltipManager from '@/client/TooltipManager';
 import BuildingsLayer from '@/client/layers/BuildingsLayer';
 import HillshadeLayer from '@/client/layers/HillshadeLayer';
 import MapControls from '@/client/MapControls';
@@ -46,6 +47,7 @@ const Map = () => {
           <LayerComponent key={id} />
         : null
       )}
+      <TooltipManager />
     </MapLibreMap>
   );
 };

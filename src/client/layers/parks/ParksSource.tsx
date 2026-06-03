@@ -2,10 +2,7 @@ import { Source } from 'react-map-gl/maplibre';
 
 import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
-import useTooltip from '@/client/hooks/useTooltip';
-import ParksTooltip from '@/client/layers/parks/ParksTooltip';
 import { useParks } from '@/client/hooks/useLayerData';
-import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const ParksSource = () => {
   const { data } = useParks();
@@ -17,25 +14,12 @@ const ParksSource = () => {
     },
   ]);
 
-  const { hoveredFeature } = useTooltip({
-    layerIds: [MAP_LAYER_IDS.parks],
-  });
-
   if (!data || !isImageLoaded) {
     return null;
   }
 
   return (
-    <>
-      <Source
-        id='parks-source'
-        type='geojson'
-        data={data}
-      />
-      {hoveredFeature && (
-        <ParksTooltip f={hoveredFeature} />
-      )}
-    </>
+    <Source id='parks-source' type='geojson' data={data} />
   );
 };
 

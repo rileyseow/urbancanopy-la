@@ -2,16 +2,10 @@ import { Source } from 'react-map-gl/maplibre';
 
 import metroStopIconUrl from '@/assets/metroStop.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
-import useTooltip from '@/client/hooks/useTooltip';
-import {
-  TransitRoutesTooltip,
-  TransitStopsTooltip,
-} from '@/client/layers/transit/TransitTooltip';
 import {
   useTransitRoutes,
   useTransitStops,
 } from '@/client/hooks/useLayerData';
-import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
 const TransitSource = () => {
   const { data: routesData } = useTransitRoutes();
@@ -23,14 +17,6 @@ const TransitSource = () => {
       src: metroStopIconUrl,
     },
   ]);
-
-  const { hoveredFeature } = useTooltip({
-    layerIds: [
-      MAP_LAYER_IDS.transitRoutes,
-      MAP_LAYER_IDS.transitStops,
-      MAP_LAYER_IDS.transitMetroStops,
-    ],
-  });
 
   if (!routesData || !stopsData || !isImageLoaded) {
     return null;
@@ -48,16 +34,6 @@ const TransitSource = () => {
         type='geojson'
         data={stopsData}
       />
-      {hoveredFeature ?
-        (
-          Object.hasOwn(
-            hoveredFeature.feature.properties,
-            'route_id'
-          )
-        ) ?
-          <TransitRoutesTooltip f={hoveredFeature} />
-        : <TransitStopsTooltip f={hoveredFeature} />
-      : null}
     </>
   );
 };
