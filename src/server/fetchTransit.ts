@@ -4,6 +4,8 @@ import type {
   TransitStopFC,
 } from '@/types/transit.types';
 
+const PAGE_SIZE = 1000;
+
 export const fetchTransitRoutes =
   async (): Promise<TransitRouteFC> => {
     const { data, error } = await supabase
@@ -45,18 +47,35 @@ export const fetchTransitRoutes =
 
 export const fetchTransitStops =
   async (): Promise<TransitStopFC> => {
-    const { data, error } = await supabase
-      .from('gtfs_stops')
-      .select(
-        'stop_id, geometry, agency_id, route_type, stop_code, stop_name'
-      );
+    let data = [];
+    let from = 0;
 
-    if (error) {
-      console.error(
-        'Error fetching transit stops from Supabase:',
-        error
-      );
-      throw new Error('Failed to fetch transit stops data');
+    while (true) {
+      const { data: page, error } = await supabase
+        .from('gtfs_stops')
+        .select(
+          'stop_id, geometry, agency_id, route_type, stop_code, stop_name'
+        )
+        .order('stop_id')
+        .range(from, from + PAGE_SIZE - 1);
+
+      if (error) {
+        console.error(
+          'Error fetching transit stops from Supabase:',
+          error
+        );
+        throw new Error(
+          'Failed to fetch transit stops data'
+        );
+      }
+
+      data.push(...page);
+
+      if (page.length < PAGE_SIZE) {
+        break;
+      }
+
+      from += PAGE_SIZE;
     }
 
     // return as geojson
