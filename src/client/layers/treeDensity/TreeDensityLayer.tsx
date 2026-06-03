@@ -11,7 +11,7 @@ const TreeDensityLayer = ({
     <Layer
       id={MAP_LAYER_IDS.treeDensity}
       source='tree-density-source'
-      beforeId={MAP_LAYER_IDS.transitRoutes}
+      beforeId='label_other' // see basemap style spec
       type='fill'
       filter={[
         'any',

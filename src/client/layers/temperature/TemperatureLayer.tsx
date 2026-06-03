@@ -12,7 +12,7 @@ const TemperatureLayer = ({
       <Layer
         id={MAP_LAYER_IDS.temperature}
         source='temperature-source'
-        beforeId={MAP_LAYER_IDS.transitRoutes}
+        beforeId='label_other' // see basemap style spec
         type='raster'
         layout={{
           visibility: isLayerVisible ? 'visible' : 'none',
@@ -36,6 +36,7 @@ const TemperatureLayer = ({
               ['+', ['*', ['get', 'value'], 1.8], 32], // convert c to f
             ],
           ],
+          'text-allow-overlap': true,
           'text-size': 12,
         }}
         paint={{

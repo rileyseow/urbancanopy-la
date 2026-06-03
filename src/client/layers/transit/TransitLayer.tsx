@@ -14,7 +14,7 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitRoutes}
         source='transit-routes-source'
         type='line'
-        beforeId={MAP_LAYER_IDS.drinkingWater}
+        beforeId='label_city' // see basemap style spec
         filter={['==', ['geometry-type'], 'LineString']}
         layout={{
           visibility: isLayerVisible ? 'visible' : 'none',
@@ -40,7 +40,7 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitStops}
         source='transit-stops-source'
         type='circle'
-        beforeId={MAP_LAYER_IDS.drinkingWater}
+        beforeId='label_city'
         minzoom={TRANSIT_STOPS_MIN_ZOOM}
         filter={[
           'all',
@@ -68,7 +68,7 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitMetroStops}
         source='transit-stops-source'
         type='symbol'
-        beforeId={MAP_LAYER_IDS.drinkingWater}
+        beforeId='label_city'
         filter={[
           'all',
           ['==', ['geometry-type'], 'Point'],

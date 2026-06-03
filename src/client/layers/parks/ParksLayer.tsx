@@ -12,7 +12,7 @@ const ParksLayer = ({
       id={MAP_LAYER_IDS.parks}
       source='parks-source'
       type='fill'
-      beforeId={MAP_LAYER_IDS.transitRoutes}
+      beforeId='label_other' // see basemap style spec
       filter={[
         'any',
         ['==', ['geometry-type'], 'Polygon'],
