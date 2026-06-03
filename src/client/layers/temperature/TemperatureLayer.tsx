@@ -2,7 +2,11 @@ import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
-const TemperatureLayer = () => {
+const TemperatureLayer = ({
+  isLayerVisible,
+}: {
+  isLayerVisible: boolean;
+}) => {
   return (
     <>
       <Layer
@@ -10,6 +14,9 @@ const TemperatureLayer = () => {
         source='temperature-source'
         beforeId={MAP_LAYER_IDS.transitRoutes}
         type='raster'
+        layout={{
+          visibility: isLayerVisible ? 'visible' : 'none',
+        }}
         paint={{
           'raster-opacity': 0.5,
         }}
@@ -20,6 +27,7 @@ const TemperatureLayer = () => {
         source-layer='grid'
         type='symbol'
         layout={{
+          visibility: isLayerVisible ? 'visible' : 'none',
           'text-font': ['Noto Sans Regular'],
           'text-field': [
             'to-string',

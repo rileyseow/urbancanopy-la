@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
 import BicycleParkingSvg from '@/assets/bicycleParking.svg';
 import BusSvg from '@/assets/bus.svg';
 import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
@@ -17,19 +15,11 @@ import TransitLayer from '@/client/layers/transit/TransitLayer';
 import TreeDensityLayer from '@/client/layers/treeDensity/TreeDensityLayer';
 import TemperatureLayer from '@/client/layers/temperature/TemperatureLayer';
 
-type LayerConfig = {
-  id: string;
-  label: string;
-  icon: any;
-  component: FC;
-  isVisibleByDefault: boolean;
-};
-
 /**
  * @constant
  * @description Map layer configurations
  */
-export const LAYERS: LayerConfig[] = [
+export const LAYERS = [
   {
     id: 'parks',
     label: 'Parks',
@@ -88,4 +78,5 @@ export const LAYERS: LayerConfig[] = [
   },
 ] as const;
 
-export type LayerId = (typeof LAYERS)[number]['id'];
+type LayerConfig = (typeof LAYERS)[number];
+export type LayerId = LayerConfig['id'];

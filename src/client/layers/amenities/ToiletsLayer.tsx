@@ -2,7 +2,11 @@ import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
-const ToiletsLayer = () => {
+const ToiletsLayer = ({
+  isLayerVisible,
+}: {
+  isLayerVisible: boolean;
+}) => {
   return (
     <Layer
       id={MAP_LAYER_IDS.toilets}
@@ -14,6 +18,7 @@ const ToiletsLayer = () => {
         ['==', ['get', 'amenity_type'], 'toilets'],
       ]}
       layout={{
+        visibility: isLayerVisible ? 'visible' : 'none',
         'icon-image': 'toilet-icon',
         'icon-size': 0.3,
         'icon-allow-overlap': true,

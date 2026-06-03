@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
 import BicycleParkingSource from '@/client/layers/amenities/BicycleParkingSource';
 import DrinkingWaterSource from '@/client/layers/amenities/DrinkingWaterSource';
 import ToiletsSource from '@/client/layers/amenities/ToiletsSource';
@@ -9,16 +7,11 @@ import TemperatureSource from '@/client/layers/temperature/TemperatureSource';
 import TransitSource from '@/client/layers/transit/TransitSource';
 import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
 
-type SourceConfig = {
-  id: string;
-  component: FC;
-};
-
 /**
  * @constant
  * @description Map source configurations
  */
-export const SOURCES: SourceConfig[] = [
+export const SOURCES = [
   {
     id: 'bicycleParkingSource',
     component: BicycleParkingSource,

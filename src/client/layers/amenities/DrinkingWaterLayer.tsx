@@ -2,7 +2,11 @@ import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
-const DrinkingWaterLayer = () => {
+const DrinkingWaterLayer = ({
+  isLayerVisible,
+}: {
+  isLayerVisible: boolean;
+}) => {
   return (
     <Layer
       id={MAP_LAYER_IDS.drinkingWater}
@@ -14,6 +18,7 @@ const DrinkingWaterLayer = () => {
         ['==', ['get', 'amenity_type'], 'drinking_water'],
       ]}
       layout={{
+        visibility: isLayerVisible ? 'visible' : 'none',
         'icon-image': 'drinking-water-icon',
         'icon-size': 0.3,
         'icon-allow-overlap': true,

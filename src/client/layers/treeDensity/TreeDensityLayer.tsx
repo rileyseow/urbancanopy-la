@@ -2,7 +2,11 @@ import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
-const TreeDensityLayer = () => {
+const TreeDensityLayer = ({
+  isLayerVisible,
+}: {
+  isLayerVisible: boolean;
+}) => {
   return (
     <Layer
       id={MAP_LAYER_IDS.treeDensity}
@@ -14,6 +18,9 @@ const TreeDensityLayer = () => {
         ['==', ['geometry-type'], 'Polygon'],
         ['==', ['geometry-type'], 'MultiPolygon'],
       ]}
+      layout={{
+        visibility: isLayerVisible ? 'visible' : 'none',
+      }}
       paint={{
         'fill-color': [
           'step',

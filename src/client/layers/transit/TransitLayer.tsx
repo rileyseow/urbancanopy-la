@@ -3,7 +3,11 @@ import { Layer } from 'react-map-gl/maplibre';
 import { TRANSIT_STOPS_MIN_ZOOM } from '@/constants/MAP';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 
-const TransitLayer = () => {
+const TransitLayer = ({
+  isLayerVisible,
+}: {
+  isLayerVisible: boolean;
+}) => {
   return (
     <>
       <Layer
@@ -13,6 +17,7 @@ const TransitLayer = () => {
         beforeId={MAP_LAYER_IDS.drinkingWater}
         filter={['==', ['geometry-type'], 'LineString']}
         layout={{
+          visibility: isLayerVisible ? 'visible' : 'none',
           'line-cap': 'round',
           'line-join': 'round',
         }}
@@ -49,6 +54,9 @@ const TransitLayer = () => {
             ],
           ],
         ]}
+        layout={{
+          visibility: isLayerVisible ? 'visible' : 'none',
+        }}
         paint={{
           'circle-radius': 3,
           'circle-color': '#5b6b7c',
@@ -71,6 +79,7 @@ const TransitLayer = () => {
           ],
         ]}
         layout={{
+          visibility: isLayerVisible ? 'visible' : 'none',
           'icon-image': 'metro-stop-icon',
           'icon-size': 0.2,
           'icon-allow-overlap': true,

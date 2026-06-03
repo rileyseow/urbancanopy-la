@@ -42,11 +42,12 @@ const Map = () => {
       {SOURCES.map(({ component: SourceComponent, id }) => (
         <SourceComponent key={id} />
       ))}
-      {LAYERS.map(({ component: LayerComponent, id }) =>
-        visibleLayers[id] ?
-          <LayerComponent key={id} />
-        : null
-      )}
+      {LAYERS.map(({ component: LayerComponent, id }) => (
+        <LayerComponent
+          key={id}
+          isLayerVisible={visibleLayers[id]}
+        />
+      ))}
       <TooltipManager />
     </MapLibreMap>
   );
