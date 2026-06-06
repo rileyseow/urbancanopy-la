@@ -6,7 +6,7 @@ import { getWeatherCode } from '@/client/LocationInsights/getWeatherCode';
 import {
   useWeatherForecast,
   useWeatherAQI,
-} from '@/client/LocationInsights/useWeather';
+} from '@/client/hooks/useWeatherData';
 
 import './LocationInsights.scss';
 
