@@ -10,6 +10,7 @@ export const MAP_LAYER_IDS = {
   hillshade: 'hillshade-layer',
   iceCream: 'ice-cream-layer',
   parks: 'parks-layer',
+  shadeCoverage: 'shade-coverage-layer',
   temperature: 'temperature-layer',
   temperatureLabels: 'temperature-labels-layer',
   treeDensity: 'tree-density-layer',

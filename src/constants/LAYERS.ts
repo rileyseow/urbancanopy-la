@@ -1,6 +1,7 @@
 import BicycleParkingSvg from '@/assets/bicycleParking.svg';
 import BusSvg from '@/assets/bus.svg';
 import DrinkingWaterSvg from '@/assets/drinkingWater.svg';
+import HexagonGraySvg from '@/assets/hexagonGray.svg';
 import HexagonGreenSvg from '@/assets/hexagonGreen.svg';
 import IceCreamSvg from '@/assets/iceCream.svg';
 import ParkSvg from '@/assets/park.svg';
@@ -11,6 +12,7 @@ import DrinkingWaterLayer from '@/client/layers/amenities/DrinkingWaterLayer';
 import ToiletsLayer from '@/client/layers/amenities/ToiletsLayer';
 import IceCreamLayer from '@/client/layers/iceCream/IceCreamLayer';
 import ParksLayer from '@/client/layers/parks/ParksLayer';
+import ShadeCoverageLayer from '@/client/layers/shadeCoverage/ShadeCoverageLayer';
 import TransitLayer from '@/client/layers/transit/TransitLayer';
 import TreeDensityLayer from '@/client/layers/treeDensity/TreeDensityLayer';
 import TemperatureLayer from '@/client/layers/temperature/TemperatureLayer';
@@ -67,6 +69,13 @@ export const LAYERS = [
     label: 'Tree Density',
     icon: HexagonGreenSvg,
     component: TreeDensityLayer,
+    isVisibleByDefault: false,
+  },
+  {
+    id: 'shadeCoverage',
+    label: 'Shade Coverage',
+    icon: HexagonGraySvg,
+    component: ShadeCoverageLayer,
     isVisibleByDefault: false,
   },
   {

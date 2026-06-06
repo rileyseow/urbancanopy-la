@@ -3,6 +3,7 @@ import DrinkingWaterSource from '@/client/layers/amenities/DrinkingWaterSource';
 import ToiletsSource from '@/client/layers/amenities/ToiletsSource';
 import IceCreamSource from '@/client/layers/iceCream/IceCreamSource';
 import ParksSource from '@/client/layers/parks/ParksSource';
+import ShadeCoverageSource from '@/client/layers/shadeCoverage/ShadeCoverageSource';
 import TemperatureSource from '@/client/layers/temperature/TemperatureSource';
 import TransitSource from '@/client/layers/transit/TransitSource';
 import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
@@ -43,5 +44,9 @@ export const SOURCES = [
   {
     id: 'treeDensitySource',
     component: TreeDensitySource,
+  },
+  {
+    id: 'shadeCoverageSource',
+    component: ShadeCoverageSource,
   },
 ] as const;

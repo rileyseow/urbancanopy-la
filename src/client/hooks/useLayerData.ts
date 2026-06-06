@@ -109,3 +109,16 @@ export const useTreeDensity = () => {
     refetchOnWindowFocus: false,
   });
 };
+
+export const useShadeCoverage = () => {
+  return useQuery({
+    queryKey: ['shadeCoverage'],
+    queryFn: async () => {
+      const response = await fetch('/api/shade-coverage');
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
+  });
+};

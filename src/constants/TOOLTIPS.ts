@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import AmenitiesTooltip from '@/client/layers/amenities/AmenitiesTooltip';
 import IceCreamTooltip from '@/client/layers/iceCream/IceCreamTooltip';
 import ParksTooltip from '@/client/layers/parks/ParksTooltip';
+import ShadeCoverageTooltip from '@/client/layers/shadeCoverage/ShadeCoverageTooltip';
 import {
   TransitRoutesTooltip,
   TransitStopsTooltip,
@@ -26,6 +27,7 @@ export const TOOLTIPS: Partial<
   Record<MapLayerId, TooltipComponent>
 > = {
   [MAP_LAYER_IDS.parks]: ParksTooltip,
+  [MAP_LAYER_IDS.shadeCoverage]: ShadeCoverageTooltip,
   [MAP_LAYER_IDS.transitRoutes]: TransitRoutesTooltip,
   [MAP_LAYER_IDS.transitMetroStops]: TransitStopsTooltip,
   [MAP_LAYER_IDS.transitStops]: TransitStopsTooltip,
