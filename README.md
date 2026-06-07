@@ -1,64 +1,120 @@
 # UrbanCanopy LA
 
-Real-time geospatial web application for analyzing car-free accessible urban spaces across Los Angeles using environmental and spatial data.
+UrbanCanopy LA is a geospatial web application for analyzing car-free accessible urban spaces across Los Angeles.
 
-Combines tree canopy coverage, live transit feeds, weather conditions, and points of interest datasets into an interactive map experience for discovering estimated shaded corridors, parks, cafes, transit stops, and pedestrian-friendly areas throughout the city.
+The interactive map allows users to explore walkability and transit access, shade availability, cooling resources, and green space.
 
-Deployed on Vercel at http://urbancanopyla.vercel.app.
+Built with Next.js, TypeScript, MapLibre, Supabase, and PostGIS.
+
+**Live Demo:** http://urbancanopyla.vercel.app.
 
 ## Goals
 
-- Explore climate accessibility and pedestrian comfort in urban environments
-- Demonstrate real-time geospatial analytics and mapping workflows
+- Explore how environmental infrastructure affects pedestrian accessibility in urban environments
+- Demonstrate geospatial data engineering workflows using PostGIS and modern web mapping tools
+- Transform large public datasets into interactive map visualizations and derived spatial analytics
 
 ## Features
 
-- Live LA-area map
-- Tree canopy and green space overlays
-- Real-time GTFS vehicle positions and arrivals
-- Parks, cafes, transit stops, and public-space POIs
-- Live weather and temperature integration
-- Estimated heat, shade, and comfort analytics
-- Search and location filtering
-- Mobile-friendly interactive map UI
+### Environmental Layers
+
+- Tree density visualization derived from 2022 Los Angeles County urban tree inventory data
+- Shade coverage visualization generated from countywide building footprint data
+- Live temperature overlay powered by Open-Meteo
+- Current weather and environment metrics optionally tied to user location
+- Custom shade scoring model combining vegetation density and built-environment characteristics
+
+### Transit & Public Amenities
+
+- Transit routes and stops from GTFS data
+- Parks and recreational spaces
+- Public restrooms
+- Water refill stations
+- Bicycle parking
+- Ice cream shops
+
+### Mapping & Interaction
+
+- Interactive MapLibre GL JS web map
+- Layer visibility controls
+- User geolocation support
+- Geojson rendering backed by PostGIS
+- Subtle terrain context layer using OpenStreetMap hillshade raster tiles
+- 3D building visualization using MapLibre `fill-extrusion` rendering and OpenFreeMap building data
 
 ## Stack
 
 ```text
-Environmental + Spatial Data
+Public Datasets + APIs
               ↓
-Supabase / PostGIS
+PostGIS / Supabase
               ↓
-Geospatial + Comfort Analytics
+Spatial Aggregation + Analytics
               ↓
-Next.js + MapLibre Visualization
+Next.js API Layer
+              ↓
+MapLibre Visualization
 ```
 
-- React + TypeScript
-- MapLibre GL JS
-- SCSS
+### Frontend
+
 - Next.js
+- React
+- TypeScript
+- SCSS
+- MapLibre GL JS
+
+### Backend & Data
+
 - Supabase
-- PostgreSQL + PostGIS
+- PostgreSQL
+- PostGIS
+- H3 Spatial Indexing
 
-## Development
+## Data Sources
 
-Real-time data polling + integration with cached server-side processing.
+- Los Angeles County Building Outlines (2020) - LARIAC6_BUILDINGS_2020\
+  https://data.lacounty.gov/datasets/lacounty::countywide-building-outlines-2020/about?layer=0
 
-### Environment
+- Los Angeles County Urban Trees (2022)\
+  https://data.lacounty.gov/datasets/lacounty::2022-urban-trees/about
+
+- Los Angeles County Recreational Spaces\
+  https://egis-lacounty.hub.arcgis.com/datasets/lacounty::recreational-spaces/about
+
+- Open-Meteo Forecast API, Air Quality API\
+  https://open-meteo.com/en/docs
+
+- Open-Meteo `weather-map-layer`\
+  https://www.npmjs.com/package/@openmeteo/weather-map-layer
+
+- OpenStreetMap US Tileservice Hillshade Raster Tiles\
+  https://tiles.openstreetmap.us/raster/hillshade/#map=8/37.2/-119.7
+
+- OpenStreetMap / Overpass API\
+  https://wiki.openstreetmap.org/wiki/Key:amenity
+
+- GTFS Routes and Stops\
+  https://mobilitydatabase.org
+
+## Local Development
+
+### Environment Variables
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
-WEATHER_API_KEY=your_key
+SUPABASE_SERVICE_ROLE_KEY=your_key
 ```
 
-### Data sources
+### Install
 
-- LA tree canopy
-- LA building footprint
-- LA parks and open-spaces
-- OpenStreetMap / Overpass POIs
-- GTFS real-time vehicles
-- GTFS static stops, routes
-- Weather API
+```bash
+npm install
+npm run dev
+```
+
+## Future Improvements
+
+- Time-aware shade estimation using solar position calculations
+- Expanded pedestrian comfort analytics tied to user location
+- Expanded transit accessibility data
