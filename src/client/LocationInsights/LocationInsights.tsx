@@ -1,44 +1,48 @@
 import CodePurpleSvg from '@meteocons/svg-static/flat/code-purple.svg';
 import PollenWeedSvg from '@meteocons/svg-static/flat/pollen-weed.svg';
 
-import TargetSvg from '@/assets/target.svg';
 import { getWeatherCode } from '@/client/LocationInsights/getWeatherCode';
-import {
-  useWeatherForecast,
-  useWeatherAQI,
-} from '@/client/hooks/useWeatherData';
+import Spinner from '@/client/Spinner';
+import { MAP_CENTER } from '@/constants/MAP';
+import type { Coordinates } from '@/types/map.types';
+import type {
+  WeatherAQIProperties,
+  WeatherForecastProperties,
+} from '@/types/weather.types';
 
 import './LocationInsights.scss';
 
-const LocationInsights = () => {
-  const { data, error, isLoading } = useWeatherForecast();
+type LocationInsightsProps = WeatherForecastProperties
+  & WeatherAQIProperties & {
+    isError: boolean;
+    isLoading: boolean;
+    userLocation: Coordinates;
+  };
 
-  const {
-    data: aqiData,
-    error: aqiError,
-    isLoading: aqiIsLoading,
-  } = useWeatherAQI();
+const LocationInsights = ({
+  isError,
+  isLoading,
+  userLocation,
+  apparentTemperature,
+  temperature,
+  uvIndex,
+  weatherCode,
+  aqi,
+}: LocationInsightsProps) => {
+  const { Icon: WeatherIcon, label: weatherDesc } =
+    getWeatherCode(weatherCode);
 
-  if (
-    error
-    || aqiError
-    || !data
-    || !aqiData
-    || isLoading
-    || aqiIsLoading
-  ) {
+  if (isError) {
     return null;
   }
 
-  const {
-    apparentTemperature,
-    temperature,
-    uvIndex,
-    weatherCode,
-  } = data;
-
-  const { Icon: WeatherIcon, label: weatherDesc } =
-    getWeatherCode(weatherCode);
+  if (isLoading) {
+    return (
+      <div className='LocationInsights'>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div className='LocationInsights'>
@@ -59,7 +63,7 @@ const LocationInsights = () => {
         <div className='heat-risk'>
           <PollenWeedSvg />
           <span>AQI</span>
-          <b className='heavy'>{aqiData.aqi}</b>
+          <b className='heavy'>{aqi}</b>
         </div>
         <div className='uv-index'>
           <CodePurpleSvg />
@@ -67,11 +71,18 @@ const LocationInsights = () => {
           <b className='heavy'>{uvIndex}</b>
         </div>
       </div>
-      <div className='user-location-text'>
-        <TargetSvg />
-        <span>
-          <b>Center on your location</b> for more specific
-          insights
+      <div className='current-location'>
+        <div className='pulsing-dot' />
+        <span className='desc'>
+          {(
+            userLocation.lng === MAP_CENTER.lng
+            && userLocation.lat === MAP_CENTER.lat
+          ) ?
+            'Los Angeles, CA'
+          : 'Your location'}
+        </span>
+        <span className='coord'>
+          {`${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}`}
         </span>
       </div>
     </div>

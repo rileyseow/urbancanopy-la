@@ -1,10 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 
-export const useWeatherForecast = () => {
+import type { Coordinates } from '@/types/map.types';
+
+export const useWeatherForecast = ({
+  lng,
+  lat,
+}: Coordinates) => {
   return useQuery({
-    queryKey: ['weather', 'forecast'],
+    queryKey: ['weather', 'forecast', lng, lat],
     queryFn: async () => {
-      const response = await fetch('/api/weather/forecast');
+      const response = await fetch(
+        `/api/weather/forecast?lng=${lng}&lat=${lat}`
+      );
       return response.json();
     },
     staleTime: 1000 * 60 * 5,
@@ -12,11 +19,16 @@ export const useWeatherForecast = () => {
   });
 };
 
-export const useWeatherAQI = () => {
+export const useWeatherAQI = ({
+  lng,
+  lat,
+}: Coordinates) => {
   return useQuery({
-    queryKey: ['weather', 'aqi'],
+    queryKey: ['weather', 'aqi', lng, lat],
     queryFn: async () => {
-      const response = await fetch('/api/weather/aqi');
+      const response = await fetch(
+        `/api/weather/aqi?lng=${lng}&lat=${lat}`
+      );
       return response.json();
     },
     staleTime: 1000 * 60 * 5,

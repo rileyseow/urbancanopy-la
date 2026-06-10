@@ -1,0 +1,17 @@
+@use '../../app/palette';
+
+.Spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--primary);
+  border-top-color: var(--outline-variant);
+  color: var(--outline-variant);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

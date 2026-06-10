@@ -1,10 +1,15 @@
-import { LngLat, type LngLatBoundsLike } from 'maplibre-gl';
+import { type LngLatBoundsLike } from 'maplibre-gl';
+
+import type { Coordinates } from '@/types/map.types';
 
 /**
  * @constant
  * @description The initial center of the map - Los Angeles
  */
-export const MAP_CENTER = new LngLat(-118.25, 34.05);
+export const MAP_CENTER: Coordinates = {
+  lng: -118.25,
+  lat: 34.05,
+};
 
 /**
  * @constant

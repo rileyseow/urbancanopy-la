@@ -16,18 +16,6 @@ export type WeatherForecastProperties = {
   apparentTemperature: number;
 
   /**
-   * Total cloud cover as an area fraction percentage.
-   * @example 39
-   */
-  cloudCover: number;
-
-  /**
-   * Relative humidity percentage at 2 meters above ground.
-   * @example 54
-   */
-  humidity: number;
-
-  /**
    * Air temperature at 2 meters above ground.
    * @example 66.8
    */
@@ -46,12 +34,6 @@ export type WeatherForecastProperties = {
    * @example 1
    */
   weatherCode: number;
-
-  /**
-   * Wind speed at 10 meters above ground.
-   * @example 10.4
-   */
-  windSpeed: number;
 };
 
 export type WeatherAQIProperties = {
