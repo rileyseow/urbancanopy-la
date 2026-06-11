@@ -12,31 +12,8 @@
   background-color: var(--surface);
   cursor: default;
 
-  &:not(.expanded) {
-    svg.caret {
-      transform: rotate(180deg);
-    }
-
-    .LayerControlList {
-      display: none;
-    }
-  }
-
-  button.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    h2 {
-      font-size: 14px;
-    }
-
-    svg.caret {
-      width: 18px;
-    }
+  h2 {
+    font-size: 14px;
   }
 
   .LayerControlList {

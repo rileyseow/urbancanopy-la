@@ -1,8 +1,5 @@
-import classNames from 'classnames';
-import { useState } from 'react';
 import * as Switch from '@radix-ui/react-switch';
 
-import CaretSvg from '@/assets/caret.svg';
 import { LAYERS } from '@/constants/LAYERS';
 import useMapStore from '@/stores/useMapStore';
 
@@ -34,21 +31,9 @@ const LayerControlList = () => {
 };
 
 const LayerControl = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
-
   return (
-    <div
-      className={classNames('LayerControl', {
-        expanded: isExpanded,
-      })}
-    >
-      <button
-        className='header'
-        onClick={() => setIsExpanded(prev => !prev)}
-      >
-        <h2>Map Layers</h2>
-        <CaretSvg className='caret' />
-      </button>
+    <div className='LayerControl'>
+      <h2>Map Layers</h2>
       <LayerControlList />
     </div>
   );
