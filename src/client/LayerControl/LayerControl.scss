@@ -6,14 +6,21 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--outline-variant);
-  background-color: var(--surface);
-  cursor: default;
 
-  h2 {
-    font-size: 14px;
+  .POILayerControl,
+  .EnvironmentLayerControl {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--outline-variant);
+    background-color: var(--surface);
+    cursor: default;
+
+    h2 {
+      font-size: 14px;
+    }
   }
 
   .LayerControlList {
