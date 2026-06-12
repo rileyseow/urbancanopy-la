@@ -29,7 +29,7 @@ describe('useMapStore', () => {
   it('correctly sets a layer visibility', () => {
     const store = useMapStore.getState();
     const initial = store.visibleLayers.parks;
-    store.setIsLayerVisible('parks', !initial);
+    store.setVisibleLayer('parks', !initial);
 
     expect(useMapStore.getState().visibleLayers.parks).toBe(
       !initial
@@ -38,9 +38,7 @@ describe('useMapStore', () => {
 
   it('only updates the targeted layer', () => {
     const before = useMapStore.getState().visibleLayers;
-    useMapStore
-      .getState()
-      .setIsLayerVisible('parks', false);
+    useMapStore.getState().setVisibleLayer('parks', false);
     const after = useMapStore.getState().visibleLayers;
 
     (
@@ -54,9 +52,7 @@ describe('useMapStore', () => {
 
   it('creates a new visibleLayers object when updating', () => {
     const before = useMapStore.getState().visibleLayers;
-    useMapStore
-      .getState()
-      .setIsLayerVisible('parks', false);
+    useMapStore.getState().setVisibleLayer('parks', false);
     const after = useMapStore.getState().visibleLayers;
     expect(after).not.toBe(before);
   });

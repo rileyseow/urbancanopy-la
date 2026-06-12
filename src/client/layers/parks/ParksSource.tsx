@@ -3,6 +3,7 @@ import { Source } from 'react-map-gl/maplibre';
 import parkIconUrl from '@/assets/park.svg?url';
 import useMapImage from '@/client/hooks/useMapImage';
 import { useParks } from '@/client/hooks/useLayerData';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const ParksSource = () => {
   const { data } = useParks();
@@ -19,7 +20,11 @@ const ParksSource = () => {
   }
 
   return (
-    <Source id='parks-source' type='geojson' data={data} />
+    <Source
+      id={MAP_SOURCE_IDS.parks}
+      type='geojson'
+      data={data}
+    />
   );
 };
 

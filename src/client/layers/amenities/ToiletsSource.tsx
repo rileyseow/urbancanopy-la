@@ -3,6 +3,7 @@ import { Source } from 'react-map-gl/maplibre';
 import toiletIconUrl from '@/assets/toilet.svg?url';
 import { useToilets } from '@/client/hooks/useLayerData';
 import useMapImage from '@/client/hooks/useMapImage';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const ToiletsSource = () => {
   const { data } = useToilets();
@@ -20,7 +21,7 @@ const ToiletsSource = () => {
 
   return (
     <Source
-      id='toilets-source'
+      id={MAP_SOURCE_IDS.toilets}
       type='geojson'
       data={data}
     />

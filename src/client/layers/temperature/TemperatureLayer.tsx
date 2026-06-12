@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const TemperatureLayer = ({
   isLayerVisible,
@@ -11,7 +12,7 @@ const TemperatureLayer = ({
     <>
       <Layer
         id={MAP_LAYER_IDS.temperature}
-        source='temperature-source'
+        source={MAP_SOURCE_IDS.temperature}
         beforeId='label_other' // see basemap style spec
         type='raster'
         layout={{

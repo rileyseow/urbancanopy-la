@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const DrinkingWaterLayer = ({
   isLayerVisible,
@@ -10,7 +11,7 @@ const DrinkingWaterLayer = ({
   return (
     <Layer
       id={MAP_LAYER_IDS.drinkingWater}
-      source='drinking-water-source'
+      source={MAP_SOURCE_IDS.drinkingWater}
       type='symbol'
       filter={[
         'all',

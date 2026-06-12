@@ -1,5 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import * as Switch from '@radix-ui/react-switch';
+import classNames from 'classnames';
 import { useState } from 'react';
 
 import {
@@ -8,15 +9,18 @@ import {
   type EnvironmentLayerId,
 } from '@/constants/ENVIRONMENT_LAYERS';
 import { type LayerId } from '@/constants/LAYERS';
+import useMapStore from '@/stores/useMapStore';
 
 const EnvironmentLayerControl = ({
-  setIsLayerVisible,
+  setVisibleLayer,
 }: {
-  setIsLayerVisible: (
+  setVisibleLayer: (
     id: LayerId,
     isVisible: boolean
   ) => void;
 }) => {
+  const loadedSources = useMapStore(s => s.loadedSources);
+
   const [isControlEnabled, setIsControlEnabled] =
     useState<boolean>(false);
 
@@ -27,7 +31,7 @@ const EnvironmentLayerControl = ({
 
   const handleCheckedChange = () => {
     ENVIRONMENT_LAYERS.forEach(layer =>
-      setIsLayerVisible(
+      setVisibleLayer(
         layer.id,
         isControlEnabled ? false : (
           layer.id === selectedLayer
@@ -40,7 +44,7 @@ const EnvironmentLayerControl = ({
   const handleValueChange = (value: EnvironmentLayerId) => {
     setSelectedLayer(value);
     ENVIRONMENT_LAYERS.forEach(layer =>
-      setIsLayerVisible(layer.id, layer.id === value)
+      setVisibleLayer(layer.id, layer.id === value)
     );
   };
 
@@ -63,8 +67,15 @@ const EnvironmentLayerControl = ({
         onValueChange={handleValueChange}
       >
         {ENVIRONMENT_LAYERS.map(
-          ({ icon: Icon, id, label }, idx) => (
-            <div key={id} className='item'>
+          ({ icon: Icon, id, label, sourceId }, idx) => (
+            <div
+              key={id}
+              className={classNames('item', {
+                loaded: [sourceId]
+                  .flat()
+                  .every(id => loadedSources[id]),
+              })}
+            >
               <label
                 className='radio-label left'
                 htmlFor={`r_${idx}`}

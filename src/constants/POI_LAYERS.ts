@@ -10,6 +10,7 @@ import ToiletsLayer from '@/client/layers/amenities/ToiletsLayer';
 import IceCreamLayer from '@/client/layers/iceCream/IceCreamLayer';
 import ParksLayer from '@/client/layers/parks/ParksLayer';
 import TransitLayer from '@/client/layers/transit/TransitLayer';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 /**
  * @constant
@@ -21,6 +22,7 @@ export const POI_LAYERS = [
     label: 'Parks',
     icon: ParkSvg,
     component: ParksLayer,
+    sourceId: MAP_SOURCE_IDS.parks,
     isVisibleByDefault: true,
   },
   {
@@ -28,6 +30,10 @@ export const POI_LAYERS = [
     label: 'Transit',
     icon: BusSvg,
     component: TransitLayer,
+    sourceId: [
+      MAP_SOURCE_IDS.transitRoutes,
+      MAP_SOURCE_IDS.transitStops,
+    ],
     isVisibleByDefault: true,
   },
   {
@@ -35,6 +41,7 @@ export const POI_LAYERS = [
     label: 'Water Refill',
     icon: DrinkingWaterSvg,
     component: DrinkingWaterLayer,
+    sourceId: MAP_SOURCE_IDS.drinkingWater,
     isVisibleByDefault: true,
   },
   {
@@ -42,6 +49,7 @@ export const POI_LAYERS = [
     label: 'Bicycle Parking',
     icon: BicycleParkingSvg,
     component: BicycleParkingLayer,
+    sourceId: MAP_SOURCE_IDS.bicycleParking,
     isVisibleByDefault: false,
   },
   {
@@ -49,6 +57,7 @@ export const POI_LAYERS = [
     label: 'Public Restrooms',
     icon: ToiletSvg,
     component: ToiletsLayer,
+    sourceId: MAP_SOURCE_IDS.toilets,
     isVisibleByDefault: false,
   },
   {
@@ -56,6 +65,7 @@ export const POI_LAYERS = [
     label: 'Ice Cream',
     icon: IceCreamSvg,
     component: IceCreamLayer,
+    sourceId: MAP_SOURCE_IDS.iceCream,
     isVisibleByDefault: false,
   },
 ] as const;

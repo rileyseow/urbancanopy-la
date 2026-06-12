@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const ParksLayer = ({
   isLayerVisible,
@@ -10,7 +11,7 @@ const ParksLayer = ({
   return (
     <Layer
       id={MAP_LAYER_IDS.parks}
-      source='parks-source'
+      source={MAP_SOURCE_IDS.parks}
       type='fill'
       beforeId='label_other' // see basemap style spec
       filter={[

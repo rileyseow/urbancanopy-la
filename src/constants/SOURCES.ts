@@ -5,8 +5,10 @@ import IceCreamSource from '@/client/layers/iceCream/IceCreamSource';
 import ParksSource from '@/client/layers/parks/ParksSource';
 import ShadeCoverageSource from '@/client/layers/shadeCoverage/ShadeCoverageSource';
 import TemperatureSource from '@/client/layers/temperature/TemperatureSource';
-import TransitSource from '@/client/layers/transit/TransitSource';
+import TransitRoutesSource from '@/client/layers/transit/TransitRoutesSource';
+import TransitStopsSource from '@/client/layers/transit/TransitStopsSource';
 import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 /**
  * @constant
@@ -14,39 +16,46 @@ import TreeDensitySource from '@/client/layers/treeDensity/TreeDensitySource';
  */
 export const SOURCES = [
   {
-    id: 'bicycleParkingSource',
+    id: MAP_SOURCE_IDS.bicycleParking,
     component: BicycleParkingSource,
   },
   {
-    id: 'drinkingWaterSource',
+    id: MAP_SOURCE_IDS.drinkingWater,
     component: DrinkingWaterSource,
   },
   {
-    id: 'toiletsSource',
+    id: MAP_SOURCE_IDS.toilets,
     component: ToiletsSource,
   },
   {
-    id: 'iceCreamSource',
+    id: MAP_SOURCE_IDS.iceCream,
     component: IceCreamSource,
   },
   {
-    id: 'parksSource',
+    id: MAP_SOURCE_IDS.parks,
     component: ParksSource,
   },
   {
-    id: 'temperatureSource',
+    id: MAP_SOURCE_IDS.temperature,
     component: TemperatureSource,
   },
   {
-    id: 'transitSource',
-    component: TransitSource,
+    id: MAP_SOURCE_IDS.transitRoutes,
+    component: TransitRoutesSource,
   },
   {
-    id: 'treeDensitySource',
+    id: MAP_SOURCE_IDS.transitStops,
+    component: TransitStopsSource,
+  },
+  {
+    id: MAP_SOURCE_IDS.treeDensity,
     component: TreeDensitySource,
   },
   {
-    id: 'shadeCoverageSource',
+    id: MAP_SOURCE_IDS.shadeCoverage,
     component: ShadeCoverageSource,
   },
 ] as const;
+
+type SourceConfig = (typeof SOURCES)[number];
+export type SourceId = SourceConfig['id'];

@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const IceCreamLayer = ({
   isLayerVisible,
@@ -10,7 +11,7 @@ const IceCreamLayer = ({
   return (
     <Layer
       id={MAP_LAYER_IDS.iceCream}
-      source='ice-cream-source'
+      source={MAP_SOURCE_IDS.iceCream}
       type='symbol'
       filter={['==', ['geometry-type'], 'Point']}
       layout={{

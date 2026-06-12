@@ -1,6 +1,7 @@
 import { Source } from 'react-map-gl/maplibre';
 
 import { useTreeDensity } from '@/client/hooks/useLayerData';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const TreeDensitySource = () => {
   const { data } = useTreeDensity();
@@ -11,7 +12,7 @@ const TreeDensitySource = () => {
 
   return (
     <Source
-      id='tree-density-source'
+      id={MAP_SOURCE_IDS.treeDensity}
       type='geojson'
       data={data}
     />

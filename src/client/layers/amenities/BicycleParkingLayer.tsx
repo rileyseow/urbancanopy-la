@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const BicycleParkingLayer = ({
   isLayerVisible,
@@ -10,7 +11,7 @@ const BicycleParkingLayer = ({
   return (
     <Layer
       id={MAP_LAYER_IDS.bicycleParking}
-      source='bicycle-parking-source'
+      source={MAP_SOURCE_IDS.bicycleParking}
       type='symbol'
       filter={[
         'all',

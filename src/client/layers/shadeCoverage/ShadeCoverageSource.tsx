@@ -1,6 +1,7 @@
 import { Source } from 'react-map-gl/maplibre';
 
 import { useShadeCoverage } from '@/client/hooks/useLayerData';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const ShadeCoverageSource = () => {
   const { data } = useShadeCoverage();
@@ -11,7 +12,7 @@ const ShadeCoverageSource = () => {
 
   return (
     <Source
-      id='shade-coverage-source'
+      id={MAP_SOURCE_IDS.shadeCoverage}
       type='geojson'
       data={data}
     />

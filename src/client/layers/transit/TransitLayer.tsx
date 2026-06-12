@@ -2,6 +2,7 @@ import { Layer } from 'react-map-gl/maplibre';
 
 import { TRANSIT_STOPS_MIN_ZOOM } from '@/constants/MAP';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const TransitLayer = ({
   isLayerVisible,
@@ -12,7 +13,7 @@ const TransitLayer = ({
     <>
       <Layer
         id={MAP_LAYER_IDS.transitRoutes}
-        source='transit-routes-source'
+        source={MAP_SOURCE_IDS.transitRoutes}
         type='line'
         beforeId='label_city' // see basemap style spec
         filter={['==', ['geometry-type'], 'LineString']}
@@ -38,7 +39,7 @@ const TransitLayer = ({
       />
       <Layer
         id={MAP_LAYER_IDS.transitStops}
-        source='transit-stops-source'
+        source={MAP_SOURCE_IDS.transitStops}
         type='circle'
         beforeId='label_city'
         minzoom={TRANSIT_STOPS_MIN_ZOOM}
@@ -66,7 +67,7 @@ const TransitLayer = ({
       />
       <Layer
         id={MAP_LAYER_IDS.transitMetroStops}
-        source='transit-stops-source'
+        source={MAP_SOURCE_IDS.transitStops}
         type='symbol'
         beforeId='label_city'
         filter={[

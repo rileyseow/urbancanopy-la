@@ -1,6 +1,7 @@
 import { Layer } from 'react-map-gl/maplibre';
 
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const TreeDensityLayer = ({
   isLayerVisible,
@@ -10,7 +11,7 @@ const TreeDensityLayer = ({
   return (
     <Layer
       id={MAP_LAYER_IDS.treeDensity}
-      source='tree-density-source'
+      source={MAP_SOURCE_IDS.treeDensity}
       beforeId='label_other' // see basemap style spec
       type='fill'
       filter={[

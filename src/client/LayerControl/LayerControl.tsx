@@ -6,18 +6,18 @@ import './LayerControl.scss';
 
 const LayerControl = () => {
   const visibleLayers = useMapStore(s => s.visibleLayers);
-  const setIsLayerVisible = useMapStore(
-    s => s.setIsLayerVisible
+  const setVisibleLayer = useMapStore(
+    s => s.setVisibleLayer
   );
 
   return (
     <div className='LayerControl'>
       <POILayerControl
         visibleLayers={visibleLayers}
-        setIsLayerVisible={setIsLayerVisible}
+        setVisibleLayer={setVisibleLayer}
       />
       <EnvironmentLayerControl
-        setIsLayerVisible={setIsLayerVisible}
+        setVisibleLayer={setVisibleLayer}
       />
     </div>
   );

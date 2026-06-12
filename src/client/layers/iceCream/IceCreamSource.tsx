@@ -3,6 +3,7 @@ import { Source } from 'react-map-gl/maplibre';
 import iceCreamIconUrl from '@/assets/iceCream.svg?url';
 import { useIceCream } from '@/client/hooks/useLayerData';
 import useMapImage from '@/client/hooks/useMapImage';
+import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
 const IceCreamSource = () => {
   const { data } = useIceCream();
@@ -20,7 +21,7 @@ const IceCreamSource = () => {
 
   return (
     <Source
-      id='ice-cream-source'
+      id={MAP_SOURCE_IDS.iceCream}
       type='geojson'
       data={data}
     />

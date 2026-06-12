@@ -113,6 +113,15 @@
         gap: 8px;
         font-weight: 500;
       }
+
+      &:not(.loaded) {
+        pointer-events: none;
+        opacity: 0.6;
+
+        span {
+          font-style: italic;
+        }
+      }
     }
   }
 
