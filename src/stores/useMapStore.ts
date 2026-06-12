@@ -5,7 +5,10 @@ type VisibleLayers = Record<LayerId, boolean>;
 
 type MapStore = {
   visibleLayers: VisibleLayers;
-  toggleLayer: (id: LayerId) => void;
+  setIsLayerVisible: (
+    id: LayerId,
+    isVisible: boolean
+  ) => void;
 };
 
 const DEFAULT_VISIBLE_LAYERS = Object.fromEntries(
@@ -18,11 +21,11 @@ const DEFAULT_VISIBLE_LAYERS = Object.fromEntries(
 const useMapStore = create<MapStore>(set => ({
   visibleLayers: DEFAULT_VISIBLE_LAYERS,
 
-  toggleLayer: id =>
+  setIsLayerVisible: (id, isVisible) =>
     set(state => ({
       visibleLayers: {
         ...state.visibleLayers,
-        [id]: !state.visibleLayers[id],
+        [id]: isVisible,
       },
     })),
 }));

@@ -1,0 +1,90 @@
+import * as RadioGroup from '@radix-ui/react-radio-group';
+import * as Switch from '@radix-ui/react-switch';
+import { useState } from 'react';
+
+import {
+  DEFAULT_VISIBLE_ENVIRONMENT_LAYER,
+  ENVIRONMENT_LAYERS,
+  type EnvironmentLayerId,
+} from '@/constants/ENVIRONMENT_LAYERS';
+import { type LayerId } from '@/constants/LAYERS';
+
+const EnvironmentLayerControl = ({
+  setIsLayerVisible,
+}: {
+  setIsLayerVisible: (
+    id: LayerId,
+    isVisible: boolean
+  ) => void;
+}) => {
+  const [isControlEnabled, setIsControlEnabled] =
+    useState<boolean>(false);
+
+  const [selectedLayer, setSelectedLayer] =
+    useState<EnvironmentLayerId>(
+      DEFAULT_VISIBLE_ENVIRONMENT_LAYER
+    );
+
+  const handleCheckedChange = () => {
+    ENVIRONMENT_LAYERS.forEach(layer =>
+      setIsLayerVisible(
+        layer.id,
+        isControlEnabled ? false : (
+          layer.id === selectedLayer
+        )
+      )
+    );
+    setIsControlEnabled(prev => !prev);
+  };
+
+  const handleValueChange = (value: EnvironmentLayerId) => {
+    setSelectedLayer(value);
+    ENVIRONMENT_LAYERS.forEach(layer =>
+      setIsLayerVisible(layer.id, layer.id === value)
+    );
+  };
+
+  return (
+    <div className='EnvironmentLayerControl'>
+      <div className='header'>
+        <h2>Environmental Analysis</h2>
+        <Switch.Root
+          checked={isControlEnabled}
+          onCheckedChange={handleCheckedChange}
+          className='switch'
+        >
+          <Switch.Thumb className='thumb' />
+        </Switch.Root>
+      </div>
+      <RadioGroup.Root
+        className='radio-group'
+        disabled={!isControlEnabled}
+        value={selectedLayer}
+        onValueChange={handleValueChange}
+      >
+        {ENVIRONMENT_LAYERS.map(
+          ({ icon: Icon, id, label }, idx) => (
+            <div key={id} className='item'>
+              <label
+                className='radio-label left'
+                htmlFor={`r_${idx}`}
+              >
+                <Icon className='icon' />
+                <span>{label}</span>
+              </label>
+              <RadioGroup.Item
+                className='radio-btn'
+                value={id}
+                id={`r_${idx}`}
+              >
+                <RadioGroup.Indicator className='indicator' />
+              </RadioGroup.Item>
+            </div>
+          )
+        )}
+      </RadioGroup.Root>
+    </div>
+  );
+};
+
+export default EnvironmentLayerControl;

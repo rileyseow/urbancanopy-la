@@ -7,6 +7,78 @@
   flex-direction: column;
   gap: 12px;
 
+  .icon {
+    width: 22px;
+  }
+
+  .switch {
+    width: 30px;
+    height: 18px;
+    border-radius: 50px;
+    border: none;
+    background: var(--outline-variant);
+    transition: background 150ms ease;
+    cursor: pointer;
+
+    &[data-state='checked'] {
+      background: var(--primary);
+    }
+
+    .thumb {
+      display: block;
+      width: 14px;
+      height: 14px;
+      margin-left: 2px;
+      background: var(--surface);
+      border-radius: 50px;
+      transition: transform 150ms ease;
+      will-change: transform;
+
+      &[data-state='checked'] {
+        transform: translateX(12px);
+      }
+    }
+  }
+
+  .radio-group .radio-btn {
+    width: 16px;
+    height: 16px;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    border: 1.5px solid var(--outline);
+    border-radius: 50%;
+    background: var(--surface);
+    cursor: pointer;
+
+    > .indicator {
+      visibility: none;
+      justify-self: center;
+      align-self: center;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    &[data-state='checked'] {
+      border-color: var(--primary);
+
+      > .indicator {
+        visibility: visible;
+      }
+    }
+
+    &:disabled {
+      border-color: var(--outline-variant);
+      background: var(--surface-variant);
+      cursor: default;
+
+      > .indicator {
+        background: var(--outline-variant);
+      }
+    }
+  }
+
   .POILayerControl,
   .EnvironmentLayerControl {
     display: flex;
@@ -23,7 +95,8 @@
     }
   }
 
-  .LayerControlList {
+  .POILayerControl > .LayerControlList,
+  .EnvironmentLayerControl > .radio-group {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -39,40 +112,14 @@
         align-items: center;
         gap: 8px;
         font-weight: 500;
-
-        .icon {
-          width: 22px;
-        }
-      }
-
-      .switch {
-        width: 30px;
-        height: 18px;
-        border-radius: 50px;
-        border: none;
-        background: var(--outline-variant);
-        transition: background 150ms ease;
-        cursor: pointer;
-
-        &[data-state='checked'] {
-          background: var(--primary);
-        }
-
-        .thumb {
-          display: block;
-          width: 14px;
-          height: 14px;
-          margin-left: 2px;
-          background: var(--surface);
-          border-radius: 50px;
-          transition: transform 150ms ease;
-          will-change: transform;
-
-          &[data-state='checked'] {
-            transform: translateX(12px);
-          }
-        }
       }
     }
+  }
+
+  .EnvironmentLayerControl > .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4px;
   }
 }
