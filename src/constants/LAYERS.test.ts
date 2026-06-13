@@ -34,6 +34,10 @@ describe('LAYERS', () => {
 
       expect(layer.icon).toBeDefined();
       expect(layer.component).toBeDefined();
+      expect(
+        typeof layer.sourceId === 'string'
+          || Array.isArray(layer.sourceId)
+      ).toBe(true);
     });
   });
 

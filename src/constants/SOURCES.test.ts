@@ -6,15 +6,16 @@ describe('SOURCES', () => {
   it('contains the expected sources', () => {
     expect(SOURCES.map(source => source.id).sort()).toEqual(
       [
-        'bicycleParkingSource',
-        'drinkingWaterSource',
-        'iceCreamSource',
-        'parksSource',
-        'shadeCoverageSource',
-        'temperatureSource',
-        'toiletsSource',
-        'transitSource',
-        'treeDensitySource',
+        'bicycle-parking-source',
+        'drinking-water-source',
+        'ice-cream-source',
+        'parks-source',
+        'shade-coverage-source',
+        'temperature-source',
+        'toilets-source',
+        'transit-routes-source',
+        'transit-stops-source',
+        'tree-density-source',
       ].sort()
     );
   });
@@ -27,7 +28,7 @@ describe('SOURCES', () => {
   it('defines required source properties', () => {
     SOURCES.forEach(source => {
       expect(source).toMatchObject({
-        id: expect.stringMatching(/Source$/),
+        id: expect.stringMatching(/-source$/),
       });
 
       expect(source.component).toBeDefined();
