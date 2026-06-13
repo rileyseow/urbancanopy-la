@@ -15,7 +15,7 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitRoutes}
         source={MAP_SOURCE_IDS.transitRoutes}
         type='line'
-        beforeId='label_city' // see basemap style spec
+        beforeId={MAP_LAYER_IDS.transitStops}
         filter={['==', ['geometry-type'], 'LineString']}
         layout={{
           visibility: isLayerVisible ? 'visible' : 'none',
