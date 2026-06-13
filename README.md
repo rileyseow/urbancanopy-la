@@ -102,8 +102,8 @@ MapLibre Visualization
 ### Environment Variables
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_url
-SUPABASE_SERVICE_ROLE_KEY=your_key
+SUPABASE_URL=your_url
+SUPABASE_PUBLISHABLE_KEY=your_key
 ```
 
 ### Install
