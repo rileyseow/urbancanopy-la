@@ -28,7 +28,7 @@ interface SupabaseShadeScores {
  * Computes an aggregated shade score value from tree density, building
  * coverage, and building height scores. Normalized between 0 and 1.
  *
- * @note on weighting - Tall buildings can create substantial shade
+ * @note on weighting - High building coverage can create substantial shade
  * even where tree density is low, while large tree canopies can create
  * substantial shade even where buildings are sparse. Building height
  * mostly affects shadow length and time-of-day persistence.
